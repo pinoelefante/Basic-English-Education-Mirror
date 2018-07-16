@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA0C9D3920F88A8C008A4A94 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C9D3820F88A8B008A4A94 /* UIImage+CVPixelBuffer.swift */; };
+		EA0C9D3B20F88F0B008A4A94 /* CVPixelBuffer+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C9D3A20F88F0B008A4A94 /* CVPixelBuffer+Helpers.swift */; };
+		EAB6887620F769F90054BC27 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB6887520F769F90054BC27 /* SettingsViewController.swift */; };
+		EAB6887A20F798A50054BC27 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB6887920F798A50054BC27 /* Onboarding.storyboard */; };
+		EAB6887C20F799AC0054BC27 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB6887B20F799AC0054BC27 /* OnboardingViewController.swift */; };
+		EAC5DDB820F762D900BB4D95 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5DDB720F762D900BB4D95 /* SettingsManager.swift */; };
 		F2911F6E20F5FF660004D749 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2911F6D20F5FF660004D749 /* AppDelegate.swift */; };
-		F2911F7020F5FF660004D749 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = F2911F6F20F5FF660004D749 /* art.scnassets */; };
 		F2911F7220F5FF660004D749 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2911F7120F5FF660004D749 /* ViewController.swift */; };
 		F2911F7520F5FF660004D749 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2911F7320F5FF660004D749 /* Main.storyboard */; };
 		F2911F7720F5FF670004D749 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2911F7620F5FF670004D749 /* Assets.xcassets */; };
 		F2911F7A20F5FF670004D749 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2911F7820F5FF670004D749 /* LaunchScreen.storyboard */; };
 		F2911F8520F5FF670004D749 /* EducationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2911F8420F5FF670004D749 /* EducationTests.swift */; };
 		F2911F9020F5FF670004D749 /* EducationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2911F8F20F5FF670004D749 /* EducationUITests.swift */; };
-		F2911F9F20F6064A0004D749 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2911F9E20F6064A0004D749 /* AVFoundation.framework */; };
+		F2911F9F20F6064A0004D749 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2911F9E20F6064A0004D749 /* AVFoundation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		F2911FA120F61A390004D749 /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F2911FA020F61A390004D749 /* Resnet50.mlmodel */; };
 		F2AD0F8920F74883001EA2FE /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F2AD0F8820F74883001EA2FE /* MobileNet.mlmodel */; };
 		F2AD0F8B20F74956001EA2FE /* Inceptionv3.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F2AD0F8A20F74956001EA2FE /* Inceptionv3.mlmodel */; };
@@ -39,9 +44,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EA0C9D3820F88A8B008A4A94 /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+CVPixelBuffer.swift"; path = "../../../Desktop/UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
+		EA0C9D3A20F88F0B008A4A94 /* CVPixelBuffer+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CVPixelBuffer+Helpers.swift"; path = "../../../Desktop/CVPixelBuffer+Helpers.swift"; sourceTree = "<group>"; };
+		EAB6887520F769F90054BC27 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		EAB6887920F798A50054BC27 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		EAB6887B20F799AC0054BC27 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		EAC5DDB720F762D900BB4D95 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		F2911F6A20F5FF660004D749 /* Education.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Education.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2911F6D20F5FF660004D749 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F2911F6F20F5FF660004D749 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		F2911F7120F5FF660004D749 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F2911F7420F5FF660004D749 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F2911F7620F5FF670004D749 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,16 +119,21 @@
 		F2911F6C20F5FF660004D749 /* Education */ = {
 			isa = PBXGroup;
 			children = (
+				EA0C9D3820F88A8B008A4A94 /* UIImage+CVPixelBuffer.swift */,
+				EA0C9D3A20F88F0B008A4A94 /* CVPixelBuffer+Helpers.swift */,
 				F2911FA020F61A390004D749 /* Resnet50.mlmodel */,
 				F2AD0F8820F74883001EA2FE /* MobileNet.mlmodel */,
 				F2AD0F8A20F74956001EA2FE /* Inceptionv3.mlmodel */,
 				F2911F6D20F5FF660004D749 /* AppDelegate.swift */,
-				F2911F6F20F5FF660004D749 /* art.scnassets */,
 				F2911F7120F5FF660004D749 /* ViewController.swift */,
 				F2911F7320F5FF660004D749 /* Main.storyboard */,
 				F2911F7620F5FF670004D749 /* Assets.xcassets */,
 				F2911F7820F5FF670004D749 /* LaunchScreen.storyboard */,
 				F2911F7B20F5FF670004D749 /* Info.plist */,
+				EAC5DDB720F762D900BB4D95 /* SettingsManager.swift */,
+				EAB6887520F769F90054BC27 /* SettingsViewController.swift */,
+				EAB6887920F798A50054BC27 /* Onboarding.storyboard */,
+				EAB6887B20F799AC0054BC27 /* OnboardingViewController.swift */,
 			);
 			path = Education;
 			sourceTree = "<group>";
@@ -253,10 +268,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2911F7020F5FF660004D749 /* art.scnassets in Resources */,
 				F2911F7A20F5FF670004D749 /* LaunchScreen.storyboard in Resources */,
 				F2911F7720F5FF670004D749 /* Assets.xcassets in Resources */,
 				F2911F7520F5FF660004D749 /* Main.storyboard in Resources */,
+				EAB6887A20F798A50054BC27 /* Onboarding.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,9 +297,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2AD0F8B20F74956001EA2FE /* Inceptionv3.mlmodel in Sources */,
+				EA0C9D3B20F88F0B008A4A94 /* CVPixelBuffer+Helpers.swift in Sources */,
 				F2AD0F8920F74883001EA2FE /* MobileNet.mlmodel in Sources */,
+				EAB6887620F769F90054BC27 /* SettingsViewController.swift in Sources */,
+				EAB6887C20F799AC0054BC27 /* OnboardingViewController.swift in Sources */,
+				EAC5DDB820F762D900BB4D95 /* SettingsManager.swift in Sources */,
 				F2911F7220F5FF660004D749 /* ViewController.swift in Sources */,
 				F2911FA120F61A390004D749 /* Resnet50.mlmodel in Sources */,
+				EA0C9D3920F88A8C008A4A94 /* UIImage+CVPixelBuffer.swift in Sources */,
 				F2911F6E20F5FF660004D749 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,13 +479,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2L7RA5X9LU;
+				DEVELOPMENT_TEAM = K4BQDL97D5;
 				INFOPLIST_FILE = Education/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.darcoluigi.Education;
+				PRODUCT_BUNDLE_IDENTIFIER = it.pinoelefante.Education;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -477,13 +497,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2L7RA5X9LU;
+				DEVELOPMENT_TEAM = K4BQDL97D5;
 				INFOPLIST_FILE = Education/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.darcoluigi.Education;
+				PRODUCT_BUNDLE_IDENTIFIER = it.pinoelefante.Education;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
