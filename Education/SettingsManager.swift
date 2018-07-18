@@ -17,6 +17,7 @@ class SettingsManager
     private static let firstStartSettingName = "FirstStartSetting"
     private static let voiceRateSettingName = "VoiceRateSetting"
     private static let listenRepeatSettingName = "ListenRepeatSetting"
+    private static let listenRepeatOnlyIncompletedSettingName = "ListenRepeatIncompletedSetting"
     
     static var points : Int{
         get{
@@ -72,6 +73,14 @@ class SettingsManager
         }
         set{
             setValue(setting: listenRepeatSettingName, value: newValue)
+        }
+    }
+    static var isListenRepeatOnlyIncomplete : Bool {
+        get {
+            return getValue(setting: listenRepeatOnlyIncompletedSettingName, defValue: false) as! Bool
+        }
+        set {
+            setValue(setting: listenRepeatOnlyIncompletedSettingName, value: newValue)
         }
     }
     

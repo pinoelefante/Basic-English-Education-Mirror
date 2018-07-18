@@ -176,7 +176,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lGL-Ww-VqA">
-                                <rect key="frame" x="16" y="120" width="343" height="275"/>
+                                <rect key="frame" x="16" y="120" width="343" height="318"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NRf-PD-g6J">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="31"/>
@@ -256,8 +256,25 @@
                                             </switch>
                                         </subviews>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tkr-xX-S5C">
+                                        <rect key="frame" x="0.0" y="207.66666666666669" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Listen &amp; repeat incompleted" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KgP-Z7-Zst">
+                                                <rect key="frame" x="0.0" y="0.0" width="294" height="31"/>
+                                                <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="28"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F4N-QI-IoG">
+                                                <rect key="frame" x="294" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="listenRepeatOnlyIncompleteChanged:" destination="mmP-pZ-SAj" eventType="valueChanged" id="C3j-gH-c8k"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zbv-Xo-bbY">
-                                        <rect key="frame" x="0.0" y="207.66666666666669" width="343" height="67.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="250.66666666666671" width="343" height="67.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Font size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbQ-Tq-J9n">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="33.666666666666664"/>
@@ -297,6 +314,8 @@
                     </view>
                     <connections>
                         <outlet property="listenRepeatContainer" destination="hGQ-ag-dqf" id="oNe-sk-XaB"/>
+                        <outlet property="listenRepeatOnlyIncompleteContainer" destination="tkr-xX-S5C" id="0x8-XX-Twk"/>
+                        <outlet property="listenRepeatOnlyIncompleteSwitch" destination="F4N-QI-IoG" id="dhp-OZ-RPX"/>
                         <outlet property="listenRepeatSwitch" destination="tbE-Lf-fgb" id="Y89-bP-wnN"/>
                         <outlet property="soundOn" destination="toY-KZ-5VM" id="y0n-UL-KxC"/>
                         <outlet property="textSizeLabel" destination="MVB-m4-0vL" id="cYE-cA-G7R"/>

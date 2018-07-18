@@ -193,7 +193,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     func showListenRepeat(word:String, color:String)
     {
-        if(!SettingsManager.isSoundOn || !SettingsManager.isListenRepeatEnabled){
+        let skipComplete = SettingsManager.isListenRepeatOnlyIncomplete && ChallengeManager.isSpeechComplete(word: word)
+        if(!SettingsManager.isSoundOn || !SettingsManager.isListenRepeatEnabled || skipComplete){
             return
         }
         
