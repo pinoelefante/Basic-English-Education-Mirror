@@ -36,6 +36,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
         guard let input = try? AVCaptureDeviceInput(device: captureDevice) else { return }
         captureSession.addInput(input)
+        captureSession.sessionPreset = .hd4K3840x2160
         
         let bounds = view.layer.bounds
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
@@ -70,6 +71,33 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         super.viewWillDisappear(animated)
         captureSession.stopRunning()
     }
+    /*
+    private let visionSequenceHandler = VNSequenceRequestHandler()
+    private var lastObservation: VNDetectedObjectObservation?
+    
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        guard
+            // get the CVPixelBuffer out of the CMSampleBuffer
+            let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer),
+            // make sure that there is a previous observation we can feed into the request
+            let lastObservation = self.lastObservation
+            else { return }
+        
+        // create the request
+        let request = VNTrackObjectRequest(detectedObjectObservation: lastObservation, completionHandler: nil)
+        // set the accuracy to high
+        // this is slower, but it works a lot better
+        request.trackingLevel = .accurate
+        
+        // perform the request
+        do {
+            try self.visionSequenceHandler.perform([request], on: pixelBuffer)
+        } catch {
+            print("Throws: \(error)")
+        }
+    }
+ */
+    
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if (synth.isSpeaking) {
             return
@@ -84,33 +112,36 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         if(!word.isEmpty && word != lastWord)
         {
             lastWord = word
-            print(word)
-//            let search4 = self.fourSearch(image: squareImage!, word: word)
-//            squareImage = search4 == nil ? squareImage : UIImage(pixelBuffer: search4!)
-            squareImage = binarySquare(image: squareImage!, word: word)
+            let points = ChallengeManager.itemSeen(item: word)
+            print("\(word) - points: \(points)")
+            let search4 = self.fourSearch(image: squareImage!, word: word)
+            squareImage = search4 == nil ? squareImage : UIImage(pixelBuffer: search4!)
+//            squareImage = binarySquare(image: squareImage!, word: word)
             let objectColor = getObjectColor(image: squareImage!)
             DispatchQueue.main.async {
+                
                 self.setLabelText(text: word, color: objectColor)
                 self.currentImage.image = squareImage
                 self.text2speech(text: word)
             }
         }
     }
+ 
     func setLabelText(text:String, color:UIColor) {
-        let fontSize = SettingsManager.getValue(setting: SettingsManager.fontSizeSettingName, defValue: 16) as! Int
+        let fontSize = SettingsManager.fontSize
         wordLabel.text = text
         wordLabel.font = wordLabel.font.withSize(CGFloat(Float(fontSize)))
         wordLabel.textColor = color
     }
     //Method to speak
     func text2speech(text:String) {
-        let isenable = SettingsManager.getValue(setting: SettingsManager.soundSettingName, defValue: true) as! Bool
+        let isenable = SettingsManager.isSoundOn
         if !isenable{
             return
         }
         let myUtterance = AVSpeechUtterance(string: text)
         myUtterance.rate = 0.4
-        let voiceLanguage = SettingsManager.getValue(setting: SettingsManager.soundVoiceSettingName, defValue: true) as! Bool
+        let voiceLanguage = SettingsManager.isSoundVoiceFemale
         myUtterance.voice = AVSpeechSynthesisVoice(language: voiceLanguage ? "en-US" : "en-GB")
         synth.speak(myUtterance)
     }
@@ -243,6 +274,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             
             guard let result = finishedReq.results as? [VNClassificationObservation] else { return }
             guard let firstObservation = result.first else { return }
+//            print("Screen position: \(firstObservation.accessibilityFrame)")
             let array = firstObservation.identifier.components(separatedBy: ",")
             let str = array[0]
             

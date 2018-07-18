@@ -14,10 +14,11 @@ class SettingsManager
     static let soundVoiceSettingName = "SoundVoiceSetting"
     static let fontSizeSettingName = "FontSizeSetting"
     static let userPointsSettingName = "PointsSetting"
+    static let firstStartSettingName = "FirstStartSetting"
     
-    static var points : Float{
+    static var points : Int{
         get{
-            return getValue(setting: userPointsSettingName, defValue: 0) as! Float
+            return getValue(setting: userPointsSettingName, defValue: 0) as! Int
         }
         set {
             setValue(setting: fontSizeSettingName, value: newValue)
@@ -47,12 +48,20 @@ class SettingsManager
             setValue(setting: soundVoiceSettingName, value: newValue)
         }
     }
+    static var isFirstStart : Bool {
+        get{
+            return getValue(setting: firstStartSettingName, defValue: true) as! Bool
+        }
+        set{
+            setValue(setting: firstStartSettingName, value: newValue)
+        }
+    }
     
-    static func setValue(setting key:String, value:Any)
+    private static func setValue(setting key:String, value:Any)
     {
         UserDefaults.standard.set(value, forKey: key)
     }
-    static func getValue(setting key:String, defValue:Any) -> Any? {
+    private static func getValue(setting key:String, defValue:Any) -> Any? {
         let res = UserDefaults.standard.object(forKey: key) ?? defValue
         return res
     }
