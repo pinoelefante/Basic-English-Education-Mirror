@@ -17,6 +17,11 @@ class SettingsViewController : UIViewController
     @IBOutlet weak var voiceRateLabel: UILabel!
     @IBOutlet weak var voiceTypeSelector: UISegmentedControl!
     
+    override func viewDidLoad() {
+        let cartoonFont = UIFont(name: "Cartoon Relief", size: 28)
+        voiceTypeSelector.setTitleTextAttributes([NSAttributedStringKey.font: cartoonFont!], for: .normal)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.soundOn.isOn = SettingsManager.isSoundOn
         self.textSizeSlider.value = Float(SettingsManager.fontSize)
