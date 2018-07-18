@@ -17,6 +17,7 @@ class ChallengeManager
     
     static func start()
     {
+        let context = getContext()
         let pendingChallenges = getChallengePending()
         
         if(!pendingChallenges.isEmpty){
@@ -25,6 +26,11 @@ class ChallengeManager
             
             if(d_comp.year != n_comp.year || d_comp.month != n_comp.month || d_comp.day != n_comp.day)
             {
+                for index in 0...pendingChallenges.count
+                {
+                    let item = pendingChallenges[index]
+                    context.delete(item)
+                }
                 generateChallenges()
             }
         }
@@ -40,6 +46,7 @@ class ChallengeManager
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: pItemPN)
         fetchRequest.fetchLimit = 100
         fetchRequest.predicate = NSPredicate(format: "NOT (%K IN %@)", #keyPath(PItem.name), todayItems)
+//        fetchRequest.predicate = NSPredicate(format: "(%K IN %@)", #keyPath(PItem.name), todayItems)
         do
         {
             let result = try context.fetch(fetchRequest) as! [PItem]
@@ -100,6 +107,7 @@ class ChallengeManager
         challenge.name = name
         challenge.points = points
         challenge.date = Date()
+        saveContext()
     }
     private static func getContext() -> NSManagedObjectContext
     {
@@ -177,11 +185,13 @@ class ChallengeManager
         }
         return nil
     }
-    static func itemSeen(item:String) -> Int32
+    static func itemSeen(item:String) -> (points:Int32,isChallenge:Bool)
     {
         var points:Int32 = 0
+        var is_challenge = false
         if(isChallenge(item))
         {
+            is_challenge = true
             let challenge = getChallenge(item)!
             points = challenge.points
             completeChallenge(challenge: challenge)
@@ -201,7 +211,7 @@ class ChallengeManager
                 points = 5
             }
         }
-        return points
+        return (points,is_challenge)
     }
     private static func alreadySeen(name:String) -> Bool
     {
@@ -222,7 +232,7 @@ class ChallengeManager
         completeSeen(item: pItem!, points: completed.points)
         
         context.delete(challenge)
-        
+        saveContext()
 //        if getChallengePending().isEmpty{
 //            generateChallenges()
 //        }
@@ -235,11 +245,18 @@ class ChallengeManager
         pItem.name = item
         pItem.count = 1
         pItem.date = Date()
+        saveContext()
     }
     private static func completeSeen(item:PItem, points:Int32)
     {
         item.date = points > 0 ? Date() : item.date
         item.count += 1
+        saveContext()
+    }
+    private static func saveContext()
+    {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.saveContext()
     }
     private static func getDateComponents(date:Date) -> DayComponents
     {

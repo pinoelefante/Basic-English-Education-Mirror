@@ -23,33 +23,59 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OL2-rR-Zym">
-                                <rect key="frame" x="16" y="194" width="343" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="6pZ-WK-Vpe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <size key="shadowOffset" width="2" height="2"/>
-                            </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kTw-Ix-Ngj">
                                 <rect key="frame" x="102" y="607" width="171" height="171"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EMZ-1R-6vz">
-                                <rect key="frame" x="37" y="256" width="300" height="300"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1gv-LU-XFO">
+                                <rect key="frame" x="128" y="120" width="215" height="57"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Challenge complete" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMk-sh-r6F">
+                                        <rect key="frame" x="65" y="0.0" width="150" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qex-Jc-9Hv">
+                                        <rect key="frame" x="-1" y="8" width="48" height="41"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="34"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="nome challenge" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoY-Qd-COo">
+                                        <rect key="frame" x="65" y="32" width="150" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4sj-CC-bZA">
+                                <rect key="frame" x="77" y="296" width="220" height="220"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzb-FW-Mni">
+                                <rect key="frame" x="77" y="244" width="220" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="shadowOffset" width="2" height="2"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <accessibility key="accessibilityConfiguration" identifier="mainView"/>
                         <constraints>
-                            <constraint firstItem="OL2-rR-Zym" firstAttribute="centerY" secondItem="xpV-lb-Zeo" secondAttribute="centerY" constant="-180" id="Arb-42-1rY"/>
-                            <constraint firstItem="OL2-rR-Zym" firstAttribute="leading" secondItem="hsf-O5-lVn" secondAttribute="leading" constant="16" id="Ic6-6k-Ul7"/>
-                            <constraint firstItem="hsf-O5-lVn" firstAttribute="trailing" secondItem="OL2-rR-Zym" secondAttribute="trailing" constant="16" id="LSO-12-zl5"/>
+                            <constraint firstItem="1gv-LU-XFO" firstAttribute="top" secondItem="hsf-O5-lVn" secondAttribute="top" constant="32" id="MsR-Lo-a19"/>
+                            <constraint firstItem="1gv-LU-XFO" firstAttribute="leading" secondItem="hsf-O5-lVn" secondAttribute="leading" constant="128" id="YNQ-8u-JNi"/>
+                            <constraint firstAttribute="bottom" secondItem="1gv-LU-XFO" secondAttribute="bottom" constant="635" id="apu-O3-8X5"/>
+                            <constraint firstItem="hsf-O5-lVn" firstAttribute="trailing" secondItem="1gv-LU-XFO" secondAttribute="trailing" constant="32" id="kco-bz-BAX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hsf-O5-lVn"/>
                     </view>
@@ -76,11 +102,15 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="challengeNameLabel" destination="YoY-Qd-COo" id="0Nc-XK-4gT"/>
+                        <outlet property="challengePointsLabel" destination="Qex-Jc-9Hv" id="JXS-Td-hgP"/>
+                        <outlet property="challengeShowContainer" destination="1gv-LU-XFO" id="gsz-0Z-esx"/>
+                        <outlet property="challengeTitleLabel" destination="rMk-sh-r6F" id="Rbx-cA-1xR"/>
                         <outlet property="challengesButton" destination="ZfU-Ex-AfG" id="JqZ-uB-DMS"/>
                         <outlet property="currentImage" destination="kTw-Ix-Ngj" id="eSy-kT-mAO"/>
                         <outlet property="settingsButton" destination="OFN-se-AGH" id="1je-FU-Eg0"/>
-                        <outlet property="squareFrame" destination="EMZ-1R-6vz" id="FY4-O1-fJ8"/>
-                        <outlet property="wordLabel" destination="OL2-rR-Zym" id="ch0-wb-DuD"/>
+                        <outlet property="squareFrame" destination="4sj-CC-bZA" id="Phi-va-Zcl"/>
+                        <outlet property="wordLabel" destination="nzb-FW-Mni" id="WBH-UJ-7j6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>

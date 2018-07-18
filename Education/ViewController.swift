@@ -13,19 +13,26 @@ import Vision
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
-    //Start Voice
-    let modelSize = 299
-    let synth = AVSpeechSynthesizer()
-    var lastWord: String?
-    var captureSession : AVCaptureSession!
-    var model : VNCoreMLModel?
-    var ciContext : CIContext!
+    @IBOutlet weak var challengeShowContainer: UIView!
+    @IBOutlet weak var challengeTitleLabel: UILabel!
+    @IBOutlet weak var challengeNameLabel: UILabel!
+    @IBOutlet weak var challengePointsLabel: UILabel!
     
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var challengesButton: UIButton!
     @IBOutlet weak var currentImage: UIImageView!
     @IBOutlet weak var squareFrame: UIView!
+    
+    let modelSize = 299
+    let synth = AVSpeechSynthesizer()
+    var lastWord: String?
+    var captureSession : AVCaptureSession!
+    var ciContext : CIContext!
+    lazy var model : VNCoreMLModel? =
+        {
+            return try? VNCoreMLModel(for: Inceptionv3().model)
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,11 +64,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         squareFrame.layer.borderWidth = 2
         squareFrame.layer.borderColor = UIColor.red.cgColor
         
-        view.bringSubview(toFront: settingsButton)
+        challengeShowContainer.layer.cornerRadius = 10
+        
+//        view.bringSubview(toFront: settingsButton)
         view.bringSubview(toFront: wordLabel)
         view.bringSubview(toFront: currentImage)
         view.bringSubview(toFront: squareFrame)
-        view.bringSubview(toFront: challengesButton)
+//        view.bringSubview(toFront: challengesButton)
+        view.bringSubview(toFront: challengeShowContainer)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -71,49 +81,39 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         super.viewWillDisappear(animated)
         captureSession.stopRunning()
     }
-    /*
-    private let visionSequenceHandler = VNSequenceRequestHandler()
-    private var lastObservation: VNDetectedObjectObservation?
-    
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard
-            // get the CVPixelBuffer out of the CMSampleBuffer
-            let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer),
-            // make sure that there is a previous observation we can feed into the request
-            let lastObservation = self.lastObservation
-            else { return }
-        
-        // create the request
-        let request = VNTrackObjectRequest(detectedObjectObservation: lastObservation, completionHandler: nil)
-        // set the accuracy to high
-        // this is slower, but it works a lot better
-        request.trackingLevel = .accurate
-        
-        // perform the request
-        do {
-            try self.visionSequenceHandler.perform([request], on: pixelBuffer)
-        } catch {
-            print("Throws: \(error)")
-        }
-    }
- */
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if (synth.isSpeaking) {
             return
         }
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        if model == nil{
-            model = try? VNCoreMLModel(for: Inceptionv3().model)
-        }
-        var squareImage = getSquareFrameContent(buffer: pixelBuffer)
+        
+        var squareImage = UIImage(pixelBuffer: pixelBuffer) // getSquareFrameContent(buffer: pixelBuffer)
         let word = getStringFromBuffer(buffer: UIImage.buffer(from: squareImage!)!) ?? ""
         
         if(!word.isEmpty && word != lastWord)
         {
             lastWord = word
-            let points = ChallengeManager.itemSeen(item: word)
-            print("\(word) - points: \(points)")
+            let result_seen = ChallengeManager.itemSeen(item: word)
+            if(result_seen.isChallenge){
+                print("Sfida completata: \(word)")
+                showChallengeComplete(challengeName: word, challengeTitle: "Challenge complete!" , points: result_seen.points)
+            }
+            else{
+                switch result_seen.points{
+                case 0:
+                    print("Hai già visto questo oggetto oggi")
+                    showChallengeComplete(challengeName: word, challengeTitle: "Già visto" , points: result_seen.points)
+                case 1:
+                    print("Hai già visto questo oggetto, ma è la prima volta che lo vedi oggi")
+                    showChallengeComplete(challengeName: word, challengeTitle: "First time today" , points: result_seen.points)
+                case 5:
+                    print("Hai visto questo oggetto per la prima volta")
+                    showChallengeComplete(challengeName: word, challengeTitle: "New object!" , points: result_seen.points)
+                default:
+                    break
+                }
+            }
             let search4 = self.fourSearch(image: squareImage!, word: word)
             squareImage = search4 == nil ? squareImage : UIImage(pixelBuffer: search4!)
 //            squareImage = binarySquare(image: squareImage!, word: word)
@@ -126,7 +126,22 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             }
         }
     }
- 
+    func showChallengeComplete(challengeName:String, challengeTitle:String, points:Int32)
+    {
+        DispatchQueue.main.async {
+            self.challengeNameLabel.text = challengeName
+            self.challengeTitleLabel.text = challengeTitle
+            self.challengeShowContainer.isHidden = false
+            self.challengePointsLabel.text = "+\(points)"
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+3) {
+            self.challengeShowContainer.isHidden = true
+            self.challengeNameLabel.text = ""
+            self.challengeTitleLabel.text = ""
+            self.challengePointsLabel.text = ""
+        }
+    }
     func setLabelText(text:String, color:UIColor) {
         let fontSize = SettingsManager.fontSize
         wordLabel.text = text
