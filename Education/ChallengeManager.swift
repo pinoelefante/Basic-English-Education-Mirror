@@ -38,16 +38,17 @@ class ChallengeManager
         let todayItems = getItemsSeenToday()
         let context = getContext()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: pItemPN)
-        fetchRequest.fetchLimit = 3
+        fetchRequest.fetchLimit = 100
         fetchRequest.predicate = NSPredicate(format: "NOT (%K IN %@)", #keyPath(PItem.name), todayItems)
         do
         {
             let result = try context.fetch(fetchRequest) as! [PItem]
             if(!result.isEmpty)
             {
-                for i in 0..<result.count
+                let picked_index = pickDistinctRandomIndexes(upTo: result.count, count: 5)
+                for p_index in picked_index
                 {
-                    let item = result[i]
+                    let item = result[p_index]
                     let points = arc4random_uniform(6)+5
                     createPendingChallenge(name: item.name!, points: Int32(points))
                 }
@@ -56,6 +57,22 @@ class ChallengeManager
         catch{
             print(error.localizedDescription)
         }
+    }
+    private static func pickDistinctRandomIndexes(upTo:Int, count:Int) -> [Int]
+    {
+        var mapped = (0...upTo).map({$0})
+        if(count > upTo){
+            return mapped
+        }
+        var picked = Array<Int>()
+        while(picked.count < count)
+        {
+            let rand_index = Int(arc4random_uniform(UInt32(mapped.count)))
+            let item_selected = mapped[rand_index]
+            picked.append(item_selected)
+            mapped.remove(at: rand_index)
+        }
+        return picked
     }
     private static func getItemsSeenToday() -> [String]
     {
@@ -98,7 +115,8 @@ class ChallengeManager
     {
         let context = getContext()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: pendingChallengePN)
-//        fetchRequest.predicate = NSPredicate(format: "order by date DESC")
+        let sort = NSSortDescriptor(key: #keyPath(PChallengePending.date), ascending: false)
+        fetchRequest.sortDescriptors = [sort]
         do
         {
             let result = try context.fetch(fetchRequest)
@@ -115,7 +133,8 @@ class ChallengeManager
     {
         let context = getContext()
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: completedChallengePN)
-//        fetchRequest.predicate = NSPredicate(format: "order by date DESC")
+        let sort = NSSortDescriptor(key: #keyPath(PChallengeComplete.date), ascending: false)
+        fetchRequest.sortDescriptors = [sort]
         do
         {
             let result = try context.fetch(fetchRequest)
