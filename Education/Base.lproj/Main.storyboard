@@ -202,6 +202,7 @@
                         <outlet property="soundOn" destination="toY-KZ-5VM" id="y0n-UL-KxC"/>
                         <outlet property="textSizeLabel" destination="MVB-m4-0vL" id="cYE-cA-G7R"/>
                         <outlet property="textSizeSlider" destination="VDG-1v-ksI" id="2gX-Gz-ckJ"/>
+                        <outlet property="voiceRateContainer" destination="fJn-KK-Ywf" id="pbe-jh-kfA"/>
                         <outlet property="voiceRateLabel" destination="JlP-TZ-UHC" id="yV2-S7-LKt"/>
                         <outlet property="voiceRateSlider" destination="486-fT-1OB" id="8Dt-4j-aGV"/>
                         <outlet property="voiceTypeSelector" destination="rO9-lg-o5j" id="NCl-Mg-0Xc"/>

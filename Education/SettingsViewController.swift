@@ -16,6 +16,7 @@ class SettingsViewController : UIViewController
     @IBOutlet weak var voiceRateSlider: UISlider!
     @IBOutlet weak var voiceRateLabel: UILabel!
     @IBOutlet weak var voiceTypeSelector: UISegmentedControl!
+    @IBOutlet weak var voiceRateContainer: UIStackView!
     
     override func viewDidLoad() {
         let cartoonFont = UIFont(name: "Cartoon Relief", size: 28)
@@ -28,12 +29,14 @@ class SettingsViewController : UIViewController
         self.textSizeLabel.text = "\(SettingsManager.fontSize)"
         self.voiceTypeSelector.selectedSegmentIndex = SettingsManager.isSoundVoiceFemale ? 0 : 1
         self.voiceTypeSelector.isHidden = !SettingsManager.isSoundOn
+        self.voiceRateContainer.isHidden = !SettingsManager.isSoundOn
         self.voiceRateSlider.value = (SettingsManager.voiceRate * 10)
         self.voiceRateLabel.text = "\(SettingsManager.voiceRate * 2)"
     }
     @IBAction func soundOnChanged(_ sender: UISwitch) {
         SettingsManager.isSoundOn = soundOn.isOn
         self.voiceTypeSelector.isHidden = !soundOn.isOn
+        self.voiceRateContainer.isHidden = !soundOn.isOn
     }
     @IBAction func textsizeChanged(_ sender: UISlider) {
         let fontSize = Int(textSizeSlider.value);
