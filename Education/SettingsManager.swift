@@ -10,11 +10,12 @@ import Foundation
 
 class SettingsManager
 {
-    static let soundSettingName = "SoundSetting"
-    static let soundVoiceSettingName = "SoundVoiceSetting"
-    static let fontSizeSettingName = "FontSizeSetting"
-    static let userPointsSettingName = "PointsSetting"
-    static let firstStartSettingName = "FirstStartSetting"
+    private static let soundSettingName = "SoundSetting"
+    private static let soundVoiceSettingName = "SoundVoiceSetting"
+    private static let fontSizeSettingName = "FontSizeSetting"
+    private static let userPointsSettingName = "PointsSetting"
+    private static let firstStartSettingName = "FirstStartSetting"
+    private static let voiceRateSettingName = "VoiceRateSetting"
     
     static var points : Int{
         get{
@@ -54,6 +55,14 @@ class SettingsManager
         }
         set{
             setValue(setting: firstStartSettingName, value: newValue)
+        }
+    }
+    static var voiceRate : Float {
+        get {
+            return getValue(setting: voiceRateSettingName, defValue: Float(0.4)) as! Float
+        }
+        set{
+            setValue(setting: voiceRateSettingName, value: newValue)
         }
     }
     

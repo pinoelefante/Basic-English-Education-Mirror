@@ -45,7 +45,7 @@ class ChallengeManager
             let result = try context.fetch(fetchRequest) as! [PItem]
             if(!result.isEmpty)
             {
-                let picked_index = pickDistinctRandomIndexes(upTo: result.count, count: 5)
+                let picked_index = pickDistinctRandomIndexes(upTo: result.count-1, count: 5)
                 for p_index in picked_index
                 {
                     let item = result[p_index]

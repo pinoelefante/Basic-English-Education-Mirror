@@ -140,7 +140,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             return
         }
         let myUtterance = AVSpeechUtterance(string: text)
-        myUtterance.rate = 0.4
+        myUtterance.rate = SettingsManager.voiceRate
         let voiceLanguage = SettingsManager.isSoundVoiceFemale
         myUtterance.voice = AVSpeechSynthesisVoice(language: voiceLanguage ? "en-US" : "en-GB")
         synth.speak(myUtterance)

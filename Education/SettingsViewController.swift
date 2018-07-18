@@ -15,17 +15,17 @@ class SettingsViewController : UIViewController
     @IBOutlet weak var textSizeLabel: UILabel!
     @IBOutlet weak var voiceText: UILabel!
     @IBOutlet weak var voiceType: UISwitch!
+    @IBOutlet weak var voiceRateSlider: UISlider!
+    @IBOutlet weak var voiceRateLabel: UILabel!
     
-    
-    override func viewDidLoad() {
-        
-    }
     override func viewWillAppear(_ animated: Bool) {
         self.soundOn.isOn = SettingsManager.isSoundOn
         self.textSizeSlider.value = Float(SettingsManager.fontSize)
         self.textSizeLabel.text = "\(SettingsManager.fontSize)"
         self.voiceText.text = "Voice: \(SettingsManager.isSoundVoiceFemale ? "Female" : "Male")"
         self.voiceType.isOn = SettingsManager.isSoundVoiceFemale
+        self.voiceRateSlider.value = (SettingsManager.voiceRate * 10)
+        self.voiceRateLabel.text = "\(SettingsManager.voiceRate)"
     }
     @IBAction func soundOnChanged(_ sender: UISwitch) {
         SettingsManager.isSoundOn = soundOn.isOn
@@ -39,5 +39,12 @@ class SettingsViewController : UIViewController
         let voiceOn = voiceType.isOn
         voiceText.text = "Voice: \(voiceOn ? "Female" : "Male")"
         SettingsManager.isSoundVoiceFemale = voiceOn
+    }
+    @IBAction func voiceRateChanged(_ sender: UISlider) {
+        let value = Int(sender.value)
+        print("Voice rate: \(value)")
+        let f_value = Float(value)/Float(10)
+        voiceRateLabel.text = "\(f_value)"
+        SettingsManager.voiceRate = f_value
     }
 }
