@@ -25,7 +25,7 @@ class SettingsViewController : UIViewController
         self.voiceText.text = "Voice: \(SettingsManager.isSoundVoiceFemale ? "Female" : "Male")"
         self.voiceType.isOn = SettingsManager.isSoundVoiceFemale
         self.voiceRateSlider.value = (SettingsManager.voiceRate * 10)
-        self.voiceRateLabel.text = "\(SettingsManager.voiceRate)"
+        self.voiceRateLabel.text = "\(SettingsManager.voiceRate * 2)"
     }
     @IBAction func soundOnChanged(_ sender: UISwitch) {
         SettingsManager.isSoundOn = soundOn.isOn
@@ -42,9 +42,8 @@ class SettingsViewController : UIViewController
     }
     @IBAction func voiceRateChanged(_ sender: UISlider) {
         let value = Int(sender.value)
-        print("Voice rate: \(value)")
         let f_value = Float(value)/Float(10)
-        voiceRateLabel.text = "\(f_value)"
+        voiceRateLabel.text = "\(f_value * 2)"
         SettingsManager.voiceRate = f_value
     }
 }

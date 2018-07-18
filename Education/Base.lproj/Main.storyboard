@@ -139,7 +139,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1o-p7-1qP">
                                                 <rect key="frame" x="0.0" y="20.333333333333343" width="343" height="30"/>
                                                 <subviews>
-                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="4" minValue="1" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="486-fT-1OB">
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="4" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="486-fT-1OB">
                                                         <rect key="frame" x="-2" y="0.0" width="322.33333333333331" height="31"/>
                                                         <connections>
                                                             <action selector="textsizeChanged:" destination="mmP-pZ-SAj" eventType="valueChanged" id="ub1-1r-RQN"/>
