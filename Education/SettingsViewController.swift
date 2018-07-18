@@ -17,6 +17,8 @@ class SettingsViewController : UIViewController
     @IBOutlet weak var voiceRateLabel: UILabel!
     @IBOutlet weak var voiceTypeSelector: UISegmentedControl!
     @IBOutlet weak var voiceRateContainer: UIStackView!
+    @IBOutlet weak var listenRepeatSwitch: UISwitch!
+    @IBOutlet weak var listenRepeatContainer: UIStackView!
     
     override func viewDidLoad() {
         let cartoonFont = UIFont(name: "Cartoon Relief", size: 28)
@@ -30,6 +32,8 @@ class SettingsViewController : UIViewController
         self.voiceTypeSelector.selectedSegmentIndex = SettingsManager.isSoundVoiceFemale ? 0 : 1
         self.voiceTypeSelector.isHidden = !SettingsManager.isSoundOn
         self.voiceRateContainer.isHidden = !SettingsManager.isSoundOn
+        self.listenRepeatContainer.isHidden = !SettingsManager.isSoundOn
+        self.listenRepeatSwitch.isOn = SettingsManager.isListenRepeatEnabled
         self.voiceRateSlider.value = (SettingsManager.voiceRate * 10)
         self.voiceRateLabel.text = "\(SettingsManager.voiceRate * 2)"
     }
@@ -37,6 +41,7 @@ class SettingsViewController : UIViewController
         SettingsManager.isSoundOn = soundOn.isOn
         self.voiceTypeSelector.isHidden = !soundOn.isOn
         self.voiceRateContainer.isHidden = !soundOn.isOn
+        self.listenRepeatContainer.isHidden = !soundOn.isOn
     }
     @IBAction func textsizeChanged(_ sender: UISlider) {
         let fontSize = Int(textSizeSlider.value);
@@ -52,5 +57,8 @@ class SettingsViewController : UIViewController
     @IBAction func voiceTypeChanged(_ sender: UISegmentedControl) {
         let index = sender.selectedSegmentIndex
         SettingsManager.isSoundVoiceFemale = index == 0
+    }
+    @IBAction func listenRepeatChanged(_ sender: UISwitch) {
+        SettingsManager.isListenRepeatEnabled = sender.isOn
     }
 }

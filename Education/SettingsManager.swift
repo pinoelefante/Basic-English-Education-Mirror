@@ -16,6 +16,7 @@ class SettingsManager
     private static let userPointsSettingName = "PointsSetting"
     private static let firstStartSettingName = "FirstStartSetting"
     private static let voiceRateSettingName = "VoiceRateSetting"
+    private static let listenRepeatSettingName = "ListenRepeatSetting"
     
     static var points : Int{
         get{
@@ -63,6 +64,14 @@ class SettingsManager
         }
         set{
             setValue(setting: voiceRateSettingName, value: newValue)
+        }
+    }
+    static var isListenRepeatEnabled : Bool {
+        get{
+            return getValue(setting: listenRepeatSettingName, defValue: true) as! Bool
+        }
+        set{
+            setValue(setting: listenRepeatSettingName, value: newValue)
         }
     }
     

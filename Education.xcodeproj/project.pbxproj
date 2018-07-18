@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EA0C9D3920F88A8C008A4A94 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C9D3820F88A8B008A4A94 /* UIImage+CVPixelBuffer.swift */; };
-		EA0C9D3B20F88F0B008A4A94 /* CVPixelBuffer+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C9D3A20F88F0B008A4A94 /* CVPixelBuffer+Helpers.swift */; };
 		EA60F82020FF37CA00CA7680 /* Cartoon Relief.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA60F81F20FF37CA00CA7680 /* Cartoon Relief.ttf */; };
 		EA67967620FDD34D009551F6 /* ChallengeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67967520FDD34D009551F6 /* ChallengeManager.swift */; };
 		EA67967920FDD364009551F6 /* Education.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA67967720FDD364009551F6 /* Education.xcdatamodeld */; };
@@ -17,6 +15,9 @@
 		EAB6887A20F798A50054BC27 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB6887920F798A50054BC27 /* Onboarding.storyboard */; };
 		EAB6887C20F799AC0054BC27 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB6887B20F799AC0054BC27 /* OnboardingViewController.swift */; };
 		EAC5DDB820F762D900BB4D95 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5DDB720F762D900BB4D95 /* SettingsManager.swift */; };
+		EAE07B4420FF90D10076E884 /* UIImageExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE07B4320FF90D10076E884 /* UIImageExt.swift */; };
+		EAE07B4520FF912B0076E884 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE07B4120FF90920076E884 /* UIImage+CVPixelBuffer.swift */; };
+		EAE07B4620FF912E0076E884 /* CVPixelBuffer+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE07B4220FF90970076E884 /* CVPixelBuffer+Helpers.swift */; };
 		F2911F6E20F5FF660004D749 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2911F6D20F5FF660004D749 /* AppDelegate.swift */; };
 		F2911F7220F5FF660004D749 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2911F7120F5FF660004D749 /* ViewController.swift */; };
 		F2911F7520F5FF660004D749 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2911F7320F5FF660004D749 /* Main.storyboard */; };
@@ -48,8 +49,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EA0C9D3820F88A8B008A4A94 /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+CVPixelBuffer.swift"; path = "../../../Desktop/UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
-		EA0C9D3A20F88F0B008A4A94 /* CVPixelBuffer+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CVPixelBuffer+Helpers.swift"; path = "../../../Desktop/CVPixelBuffer+Helpers.swift"; sourceTree = "<group>"; };
 		EA60F81F20FF37CA00CA7680 /* Cartoon Relief.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cartoon Relief.ttf"; sourceTree = "<group>"; };
 		EA67967520FDD34D009551F6 /* ChallengeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeManager.swift; sourceTree = "<group>"; };
 		EA67967820FDD364009551F6 /* Education.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Education.xcdatamodel; sourceTree = "<group>"; };
@@ -58,6 +57,9 @@
 		EAB6887920F798A50054BC27 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		EAB6887B20F799AC0054BC27 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		EAC5DDB720F762D900BB4D95 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
+		EAE07B4120FF90920076E884 /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
+		EAE07B4220FF90970076E884 /* CVPixelBuffer+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Helpers.swift"; sourceTree = "<group>"; };
+		EAE07B4320FF90D10076E884 /* UIImageExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExt.swift; sourceTree = "<group>"; };
 		F2911F6A20F5FF660004D749 /* Education.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Education.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2911F6D20F5FF660004D749 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2911F7120F5FF660004D749 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -111,6 +113,16 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		EAE07B4020FF90830076E884 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				EAE07B4120FF90920076E884 /* UIImage+CVPixelBuffer.swift */,
+				EAE07B4220FF90970076E884 /* CVPixelBuffer+Helpers.swift */,
+				EAE07B4320FF90D10076E884 /* UIImageExt.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
 		F2911F6120F5FF660004D749 = {
 			isa = PBXGroup;
 			children = (
@@ -135,9 +147,8 @@
 		F2911F6C20F5FF660004D749 /* Education */ = {
 			isa = PBXGroup;
 			children = (
+				EAE07B4020FF90830076E884 /* extensions */,
 				EA60F81E20FF37A200CA7680 /* fonts */,
-				EA0C9D3820F88A8B008A4A94 /* UIImage+CVPixelBuffer.swift */,
-				EA0C9D3A20F88F0B008A4A94 /* CVPixelBuffer+Helpers.swift */,
 				F2911FA020F61A390004D749 /* Resnet50.mlmodel */,
 				F2AD0F8820F74883001EA2FE /* MobileNet.mlmodel */,
 				F2AD0F8A20F74956001EA2FE /* Inceptionv3.mlmodel */,
@@ -318,17 +329,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2AD0F8B20F74956001EA2FE /* Inceptionv3.mlmodel in Sources */,
-				EA0C9D3B20F88F0B008A4A94 /* CVPixelBuffer+Helpers.swift in Sources */,
+				EAE07B4620FF912E0076E884 /* CVPixelBuffer+Helpers.swift in Sources */,
+				EAE07B4520FF912B0076E884 /* UIImage+CVPixelBuffer.swift in Sources */,
 				EA67967B20FE07B4009551F6 /* ChallengeTableViewController.swift in Sources */,
 				EA67967920FDD364009551F6 /* Education.xcdatamodeld in Sources */,
 				F2AD0F8920F74883001EA2FE /* MobileNet.mlmodel in Sources */,
 				EAB6887620F769F90054BC27 /* SettingsViewController.swift in Sources */,
+				EAE07B4420FF90D10076E884 /* UIImageExt.swift in Sources */,
 				EA67967620FDD34D009551F6 /* ChallengeManager.swift in Sources */,
 				EAB6887C20F799AC0054BC27 /* OnboardingViewController.swift in Sources */,
 				EAC5DDB820F762D900BB4D95 /* SettingsManager.swift in Sources */,
 				F2911F7220F5FF660004D749 /* ViewController.swift in Sources */,
 				F2911FA120F61A390004D749 /* Resnet50.mlmodel in Sources */,
-				EA0C9D3920F88A8C008A4A94 /* UIImage+CVPixelBuffer.swift in Sources */,
 				F2911F6E20F5FF660004D749 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

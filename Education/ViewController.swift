@@ -10,8 +10,9 @@ import UIKit
 import AVKit
 import AVFoundation
 import Vision
+import Speech
 
-class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
+class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, SFSpeechRecognizerDelegate {
     
     @IBOutlet weak var challengeShowContainer: UIView!
     @IBOutlet weak var challengeTitleLabel: UILabel!
@@ -23,20 +24,37 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var challengesButton: UIButton!
     @IBOutlet weak var currentImage: UIImageView!
     @IBOutlet weak var squareFrame: UIView!
+    @IBOutlet weak var listenRepeatContainer: UIView!
+    @IBOutlet weak var listenRepeatLabel: UILabel!
+    @IBOutlet weak var micStatusLabel: UILabel!
+    @IBOutlet weak var micButton: UIButton!
     
     let modelSize = 299
-    let synth = AVSpeechSynthesizer()
+    lazy var synth = AVSpeechSynthesizer()
     var lastWord: String?
     var captureSession : AVCaptureSession!
-    var ciContext : CIContext!
-    lazy var model : VNCoreMLModel? =
+    lazy var model : VNCoreMLModel? = try? VNCoreMLModel(for: Inceptionv3().model)
+    var showingListenRepeat : Bool = false {
+        willSet
         {
-            return try? VNCoreMLModel(for: Inceptionv3().model)
-    }()
+            listenRepeatContainer.isHidden = !newValue
+        }
+    }
+    var mic_listening = false {
+        willSet {
+            micButton.layer.borderWidth = newValue ? 2 : 0
+            
+        }
+    }
+    
+    private var speechRecognizer: SFSpeechRecognizer?
+    private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
+    private var recognitionTask: SFSpeechRecognitionTask?
+    
+    private let audioEngine = AVAudioEngine()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        ciContext = CIContext()
         
         //Start Camera
         captureSession = AVCaptureSession()
@@ -44,6 +62,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         guard let input = try? AVCaptureDeviceInput(device: captureDevice) else { return }
         captureSession.addInput(input)
         captureSession.sessionPreset = .hd4K3840x2160
+        
+        speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "en-US"))
+        speechRecognizer?.delegate = self
         
         let bounds = view.layer.bounds
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
@@ -66,12 +87,18 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         challengeShowContainer.layer.cornerRadius = 10
         
+        listenRepeatContainer.layer.cornerRadius = 10
+        
+        micButton.layer.cornerRadius = 15
+        micButton.layer.borderColor = UIColor.blue.cgColor
+        
 //        view.bringSubview(toFront: settingsButton)
         view.bringSubview(toFront: wordLabel)
         view.bringSubview(toFront: currentImage)
         view.bringSubview(toFront: squareFrame)
 //        view.bringSubview(toFront: challengesButton)
         view.bringSubview(toFront: challengeShowContainer)
+        view.bringSubview(toFront: listenRepeatContainer)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -80,21 +107,24 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         captureSession.stopRunning()
+        showingListenRepeat = false
+        lastWord = ""
     }
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        if (synth.isSpeaking) {
+        if (synth.isSpeaking || showingListenRepeat) {
             return
         }
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         
-        var squareImage = UIImage(pixelBuffer: pixelBuffer) // getSquareFrameContent(buffer: pixelBuffer)
+        var squareImage = getSquareFrameContent(buffer: pixelBuffer)
         let word = getStringFromBuffer(buffer: UIImage.buffer(from: squareImage!)!) ?? ""
         
         if(!word.isEmpty && word != lastWord)
         {
             lastWord = word
             let result_seen = ChallengeManager.itemSeen(item: word)
+            SettingsManager.points+=Int(result_seen.points)
             if(result_seen.isChallenge){
                 print("Sfida completata: \(word)")
                 showChallengeComplete(challengeName: word, challengeTitle: "Challenge complete!" , points: result_seen.points)
@@ -119,10 +149,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 //            squareImage = binarySquare(image: squareImage!, word: word)
             let objectColor = getObjectColor(image: squareImage!)
             DispatchQueue.main.async {
-                
                 self.setLabelText(text: word, color: objectColor)
                 self.currentImage.image = squareImage
-                self.text2speech(text: word)
+                self.text2speech(text: word, color: "black")
+                self.showListenRepeat(word: word, color: "black")
             }
         }
     }
@@ -149,16 +179,77 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         wordLabel.textColor = color
     }
     //Method to speak
-    func text2speech(text:String) {
-        let isenable = SettingsManager.isSoundOn
-        if !isenable{
+    func text2speech(text:String, color:String) {
+        if !SettingsManager.isSoundOn{
             return
         }
-        let myUtterance = AVSpeechUtterance(string: text)
+        let phrase = getPhrase(word: text, color: color)
+        let myUtterance = AVSpeechUtterance(string: phrase)
         myUtterance.rate = SettingsManager.voiceRate
         let voiceLanguage = SettingsManager.isSoundVoiceFemale
         myUtterance.voice = AVSpeechSynthesisVoice(language: voiceLanguage ? "en-US" : "en-GB")
         synth.speak(myUtterance)
+    }
+    func showListenRepeat(word:String, color:String)
+    {
+        if(!SettingsManager.isSoundOn || !SettingsManager.isListenRepeatEnabled){
+            return
+        }
+        
+        let labelText = "The \(word) \(color != "" ? "is \(color)" : "")"
+        
+        mic_listening = false
+        listenRepeatLabel.text = labelText
+        micStatusLabel.text = ""
+        self.micStatusLabel.textColor = UIColor.black
+        
+        showingListenRepeat = true
+    }
+    func getPhrase(word:String, color:String) -> String
+    {
+        return "The \(word) \(color != "" ? "is \(color)" : "")"
+    }
+    @IBAction func micIsDown(_ sender: UIButton) {
+        print("mic tapped")
+        askMicPermission(completion: { (granted, message) in
+            DispatchQueue.main.async {
+                if(self.mic_listening) // Stop listening
+                {
+                    print("Stop listening")
+                    self.mic_listening = false
+                    if granted {
+                        self.stopListening()
+                    }
+                    print(self.speechTextListened ?? "Nessun testo")
+                    if self.speechTextListened == self.listenRepeatLabel.text{
+                        ChallengeManager.setSpeechComplete(word: self.lastWord!)
+                        
+                        self.micStatusLabel.textColor = UIColor.green
+                        self.micStatusLabel.text = "Success!"
+                    }
+                    else {
+                        self.micStatusLabel.textColor = UIColor.red
+                        self.micStatusLabel.text = "Incomplete!"
+                    }
+                }
+                else // Start listening
+                {
+                    print("Start listening")
+                    self.mic_listening = true
+                    if granted {
+                        self.startListening()
+                        self.micStatusLabel.text = "Listening..."
+                    }
+                }
+            }
+        })
+    }
+    @IBAction func closeListenRepeatAction(_ sender: UIButton) {
+        if mic_listening{
+            stopListening()
+            mic_listening = false
+        }
+        showingListenRepeat = false
     }
     func getSquareFrameContent(buffer:CVPixelBuffer) -> UIImage?
     {
@@ -316,89 +407,122 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 //        print("Color: "+color.description)
         return color
     }
-}
-extension UIImage {
-    func croppedInRect(rect: CGRect) -> UIImage {
-        func rad(_ degree: Double) -> CGFloat {
-            return CGFloat(degree / 180.0 * .pi)
+    var speechTextListened : String?
+    private func startListening() {
+        // Clear existing tasks
+        if recognitionTask != nil {
+            recognitionTask?.cancel()
+            recognitionTask = nil
         }
         
-        var rectTransform: CGAffineTransform
-        switch imageOrientation {
-        case .left:
-            rectTransform = CGAffineTransform(rotationAngle: rad(90)).translatedBy(x: 0, y: -self.size.height)
-        case .right:
-            rectTransform = CGAffineTransform(rotationAngle: rad(-90)).translatedBy(x: -self.size.width, y: 0)
-        case .down:
-            rectTransform = CGAffineTransform(rotationAngle: rad(-180)).translatedBy(x: -self.size.width, y: -self.size.height)
-        default:
-            rectTransform = .identity
-        }
-        rectTransform = rectTransform.scaledBy(x: self.scale, y: self.scale)
-        
-        let imageRef = self.cgImage!.cropping(to: rect.applying(rectTransform))
-        let result = UIImage(cgImage: imageRef!, scale: self.scale, orientation: self.imageOrientation)
-        return result
-    }
-    static func imageRotatedByDegrees(oldImage: UIImage, deg degrees: CGFloat) -> UIImage {
-        //Calculate the size of the rotated view's containing box for our drawing space
-        let rotatedViewBox: UIView = UIView(frame: CGRect(x: 0, y: 0, width: oldImage.size.width, height: oldImage.size.height))
-        let t: CGAffineTransform = CGAffineTransform(rotationAngle: degrees * CGFloat.pi / 180)
-        rotatedViewBox.transform = t
-        let rotatedSize: CGSize = rotatedViewBox.frame.size
-        //Create the bitmap context
-        UIGraphicsBeginImageContext(rotatedSize)
-        let bitmap: CGContext = UIGraphicsGetCurrentContext()!
-        //Move the origin to the middle of the image so we will rotate and scale around the center.
-        bitmap.translateBy(x: rotatedSize.width / 2, y: rotatedSize.height / 2)
-        //Rotate the image context
-        bitmap.rotate(by: (degrees * CGFloat.pi / 180))
-        //Now, draw the rotated/scaled image into the context
-        bitmap.scaleBy(x: 1.0, y: -1.0)
-        bitmap.draw(oldImage.cgImage!, in: CGRect(x: -oldImage.size.width / 2, y: -oldImage.size.height / 2, width: oldImage.size.width, height: oldImage.size.height))
-        let newImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-    static func buffer(from image: UIImage) -> CVPixelBuffer? {
-        let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
-        var pixelBuffer : CVPixelBuffer?
-        let status = CVPixelBufferCreate(kCFAllocatorDefault, Int(image.size.width), Int(image.size.height), kCVPixelFormatType_32ARGB, attrs, &pixelBuffer)
-        guard (status == kCVReturnSuccess) else {
-            return nil
+        // Start audio session
+        let audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryRecord)
+            try audioSession.setMode(AVAudioSessionModeMeasurement)
+            try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
+        } catch {
+            self.micStatusLabel.text = "An error occurred when starting audio session."
+            return
         }
         
-        CVPixelBufferLockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
-        let pixelData = CVPixelBufferGetBaseAddress(pixelBuffer!)
+        // Request speech recognition
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
         
-        let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
-        let context = CGContext(data: pixelData, width: Int(image.size.width), height: Int(image.size.height), bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer!), space: rgbColorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
+//        guard let inputNode = audioEngine.inputNode else {
+//            fatalError("No input node detected")
+//        }
+        let inputNode = audioEngine.inputNode
         
-        context?.translateBy(x: 0, y: image.size.height)
-        context?.scaleBy(x: 1.0, y: -1.0)
+        guard let recognitionRequest = recognitionRequest else {
+            fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
+        }
         
-        UIGraphicsPushContext(context!)
-        image.draw(in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
-        UIGraphicsPopContext()
-        CVPixelBufferUnlockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
+        recognitionRequest.shouldReportPartialResults = true
         
-        return pixelBuffer
+        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
+            
+            var isFinal = false
+            
+            if result != nil {
+                self.speechTextListened = result?.bestTranscription.formattedString
+                self.micStatusLabel.text = self.speechTextListened
+                isFinal = result!.isFinal
+            }
+            
+            if error != nil || isFinal {
+                self.audioEngine.stop()
+                inputNode.removeTap(onBus: 0)
+                
+                self.recognitionRequest = nil
+                self.recognitionTask = nil
+            }
+        })
+        
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
+            self.recognitionRequest?.append(buffer)
+        }
+        
+        audioEngine.prepare()
+        
+        do {
+            try audioEngine.start()
+        } catch {
+            self.micStatusLabel.text = "An error occurred starting audio engine"
+        }
     }
-    func getPixelColor(x:Int, y:Int) -> UIColor {
-        return getPixelColor(pos: CGPoint(x: x, y: y))
+    
+    /**
+     Stop listening to audio and speech recognition
+     */
+    private func stopListening() {
+        self.audioEngine.stop()
+        self.recognitionRequest?.endAudio()
+        
+        self.recognitionRequest = nil
+        self.recognitionTask = nil
     }
-    func getPixelColor(pos: CGPoint) -> UIColor {
-        
-        let pixelData = self.cgImage!.dataProvider!.data
-        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
-        
-        let pixelInfo: Int = ((Int(self.size.width) * Int(pos.y)) + Int(pos.x)) * 4
-        
-        let r = CGFloat(data[pixelInfo]) / CGFloat(255.0)
-        let g = CGFloat(data[pixelInfo+1]) / CGFloat(255.0)
-        let b = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
-        let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
-        
-        return UIColor(red: r, green: g, blue: b, alpha: a)
+    /**
+     Check the status of Speech Recognizer authorization.
+     - returns: A message, and if the access is granted.
+     */
+    private func askMicPermission(completion: @escaping (Bool, String) -> ()) {
+        SFSpeechRecognizer.requestAuthorization { status in
+            let message: String
+            var granted = false
+            
+            switch status {
+            case .authorized:
+                message = "Listening..."
+                granted = true
+                break
+                
+            case .denied:
+                message = "Access to speech recognition is denied by the user."
+                break
+                
+            case .restricted:
+                message = "Speech recognition is restricted."
+                break
+                
+            case .notDetermined:
+                message = "Speech recognition has not been authorized yet."
+                break
+            }
+            
+            completion(granted, message)
+        }
+    }
+    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
+//        tapButton.isEnabled = available
+        if available {
+            // Prepare to listen
+//            mic_listening = true
+//            micStatusLabel.text = "Tap to listen"
+//            viewTapped(tapButton)
+        } else {
+//            micStatusLabel.text = "Recognition is not available."
+        }
     }
 }

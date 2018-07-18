@@ -23,10 +23,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kTw-Ix-Ngj">
-                                <rect key="frame" x="102" y="607" width="171" height="171"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1gv-LU-XFO">
                                 <rect key="frame" x="128" y="120" width="215" height="57"/>
                                 <subviews>
@@ -68,6 +64,56 @@
                                 <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="2" height="2"/>
                             </label>
+                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Ou-mw-Gu5">
+                                <rect key="frame" x="16" y="176" width="343" height="593.00000000000011"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kTw-Ix-Ngj">
+                                        <rect key="frame" x="59" y="66" width="224" height="224"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Listen &amp; repeat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXU-d5-9Q1">
+                                        <rect key="frame" x="94" y="16" width="155" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="28"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The cat is black the cat is still black" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfP-bv-uSV">
+                                        <rect key="frame" x="46" y="298" width="250" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="28"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPV-JB-e5S">
+                                        <rect key="frame" x="135" y="387" width="72" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
+                                        <state key="normal" title="MIC" image="mic_icon"/>
+                                        <connections>
+                                            <action selector="micIsDown:" destination="BV1-FR-VrT" eventType="touchUpInside" id="ElV-DD-j00"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="we are leaving in a yellow submanire" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4i-53-Xx5">
+                                        <rect key="frame" x="46" y="476" width="250" height="72"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="28"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O2Q-gQ-13o">
+                                        <rect key="frame" x="122" y="548" width="99" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="28"/>
+                                        <state key="normal" title="Close"/>
+                                        <connections>
+                                            <action selector="closeListenRepeatAction:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Sjl-f9-oxX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <accessibility key="accessibilityConfiguration" identifier="mainView"/>
@@ -108,6 +154,10 @@
                         <outlet property="challengeTitleLabel" destination="rMk-sh-r6F" id="Rbx-cA-1xR"/>
                         <outlet property="challengesButton" destination="ZfU-Ex-AfG" id="JqZ-uB-DMS"/>
                         <outlet property="currentImage" destination="kTw-Ix-Ngj" id="eSy-kT-mAO"/>
+                        <outlet property="listenRepeatContainer" destination="4Ou-mw-Gu5" id="Z3X-vi-Ipi"/>
+                        <outlet property="listenRepeatLabel" destination="JfP-bv-uSV" id="JG6-Zp-GiB"/>
+                        <outlet property="micButton" destination="SPV-JB-e5S" id="kdL-iA-NwL"/>
+                        <outlet property="micStatusLabel" destination="z4i-53-Xx5" id="ag2-O2-7fk"/>
                         <outlet property="settingsButton" destination="OFN-se-AGH" id="1je-FU-Eg0"/>
                         <outlet property="squareFrame" destination="4sj-CC-bZA" id="Phi-va-Zcl"/>
                         <outlet property="wordLabel" destination="nzb-FW-Mni" id="WBH-UJ-7j6"/>
@@ -126,7 +176,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lGL-Ww-VqA">
-                                <rect key="frame" x="16" y="120" width="343" height="232"/>
+                                <rect key="frame" x="16" y="120" width="343" height="275"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NRf-PD-g6J">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="31"/>
@@ -173,14 +223,14 @@
                                                 <rect key="frame" x="0.0" y="36" width="343" height="33.666666666666657"/>
                                                 <subviews>
                                                     <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="4" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="486-fT-1OB">
-                                                        <rect key="frame" x="-2" y="0.0" width="310" height="34.666666666666664"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="310.66666666666669" height="34.666666666666664"/>
                                                         <connections>
                                                             <action selector="textsizeChanged:" destination="mmP-pZ-SAj" eventType="valueChanged" id="ub1-1r-RQN"/>
                                                             <action selector="voiceRateChanged:" destination="mmP-pZ-SAj" eventType="valueChanged" id="gw3-e4-otA"/>
                                                         </connections>
                                                     </slider>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0.4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JlP-TZ-UHC">
-                                                        <rect key="frame" x="306" y="0.0" width="37" height="33.666666666666664"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="0.8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JlP-TZ-UHC">
+                                                        <rect key="frame" x="306.66666666666669" y="0.0" width="36.333333333333314" height="33.666666666666664"/>
                                                         <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="28"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -189,8 +239,25 @@
                                             </stackView>
                                         </subviews>
                                     </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hGQ-ag-dqf">
+                                        <rect key="frame" x="0.0" y="164.66666666666669" width="343" height="31"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Listen &amp; repeat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ag-XZ-ZIR">
+                                                <rect key="frame" x="0.0" y="0.0" width="294" height="31"/>
+                                                <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="28"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbE-Lf-fgb">
+                                                <rect key="frame" x="294" y="0.0" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="listenRepeatChanged:" destination="mmP-pZ-SAj" eventType="valueChanged" id="bEp-Cv-3gU"/>
+                                                </connections>
+                                            </switch>
+                                        </subviews>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zbv-Xo-bbY">
-                                        <rect key="frame" x="0.0" y="164.66666666666669" width="343" height="67.333333333333314"/>
+                                        <rect key="frame" x="0.0" y="207.66666666666669" width="343" height="67.333333333333314"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Font size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbQ-Tq-J9n">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="33.666666666666664"/>
@@ -229,6 +296,8 @@
                         <viewLayoutGuide key="safeArea" id="rS0-SE-ics"/>
                     </view>
                     <connections>
+                        <outlet property="listenRepeatContainer" destination="hGQ-ag-dqf" id="oNe-sk-XaB"/>
+                        <outlet property="listenRepeatSwitch" destination="tbE-Lf-fgb" id="Y89-bP-wnN"/>
                         <outlet property="soundOn" destination="toY-KZ-5VM" id="y0n-UL-KxC"/>
                         <outlet property="textSizeLabel" destination="MVB-m4-0vL" id="cYE-cA-G7R"/>
                         <outlet property="textSizeSlider" destination="VDG-1v-ksI" id="2gX-Gz-ckJ"/>
@@ -309,4 +378,7 @@
             <point key="canvasLocation" x="24.800000000000001" y="33.990147783251231"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="mic_icon" width="170" height="170"/>
+    </resources>
 </document>

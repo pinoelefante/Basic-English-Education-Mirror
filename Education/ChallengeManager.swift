@@ -245,7 +245,18 @@ class ChallengeManager
         pItem.name = item
         pItem.count = 1
         pItem.date = Date()
+        pItem.speechComplete = false
         saveContext()
+    }
+    static func setSpeechComplete(word:String)
+    {
+        let item = getItem(word)
+        item?.speechComplete = true
+    }
+    static func isSpeechComplete(word:String) -> Bool
+    {
+        let item = getItem(word)
+        return item?.speechComplete ?? false
     }
     private static func completeSeen(item:PItem, points:Int32)
     {
