@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EA0C9D3920F88A8C008A4A94 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C9D3820F88A8B008A4A94 /* UIImage+CVPixelBuffer.swift */; };
 		EA0C9D3B20F88F0B008A4A94 /* CVPixelBuffer+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C9D3A20F88F0B008A4A94 /* CVPixelBuffer+Helpers.swift */; };
+		EA60F82020FF37CA00CA7680 /* Cartoon Relief.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA60F81F20FF37CA00CA7680 /* Cartoon Relief.ttf */; };
 		EA67967620FDD34D009551F6 /* ChallengeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67967520FDD34D009551F6 /* ChallengeManager.swift */; };
 		EA67967920FDD364009551F6 /* Education.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA67967720FDD364009551F6 /* Education.xcdatamodeld */; };
 		EA67967B20FE07B4009551F6 /* ChallengeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67967A20FE07B4009551F6 /* ChallengeTableViewController.swift */; };
@@ -49,6 +50,7 @@
 /* Begin PBXFileReference section */
 		EA0C9D3820F88A8B008A4A94 /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIImage+CVPixelBuffer.swift"; path = "../../../Desktop/UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
 		EA0C9D3A20F88F0B008A4A94 /* CVPixelBuffer+Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CVPixelBuffer+Helpers.swift"; path = "../../../Desktop/CVPixelBuffer+Helpers.swift"; sourceTree = "<group>"; };
+		EA60F81F20FF37CA00CA7680 /* Cartoon Relief.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cartoon Relief.ttf"; sourceTree = "<group>"; };
 		EA67967520FDD34D009551F6 /* ChallengeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeManager.swift; sourceTree = "<group>"; };
 		EA67967820FDD364009551F6 /* Education.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Education.xcdatamodel; sourceTree = "<group>"; };
 		EA67967A20FE07B4009551F6 /* ChallengeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA60F81E20FF37A200CA7680 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				EA60F81F20FF37CA00CA7680 /* Cartoon Relief.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		F2911F6120F5FF660004D749 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +135,7 @@
 		F2911F6C20F5FF660004D749 /* Education */ = {
 			isa = PBXGroup;
 			children = (
+				EA60F81E20FF37A200CA7680 /* fonts */,
 				EA0C9D3820F88A8B008A4A94 /* UIImage+CVPixelBuffer.swift */,
 				EA0C9D3A20F88F0B008A4A94 /* CVPixelBuffer+Helpers.swift */,
 				F2911FA020F61A390004D749 /* Resnet50.mlmodel */,
@@ -279,6 +290,7 @@
 			files = (
 				F2911F7A20F5FF670004D749 /* LaunchScreen.storyboard in Resources */,
 				F2911F7720F5FF670004D749 /* Assets.xcassets in Resources */,
+				EA60F82020FF37CA00CA7680 /* Cartoon Relief.ttf in Resources */,
 				F2911F7520F5FF660004D749 /* Main.storyboard in Resources */,
 				EAB6887A20F798A50054BC27 /* Onboarding.storyboard in Resources */,
 			);
