@@ -55,7 +55,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //Start Camera
         captureSession = AVCaptureSession()
         guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
@@ -188,6 +187,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         myUtterance.rate = SettingsManager.voiceRate
         let voiceLanguage = SettingsManager.isSoundVoiceFemale
         myUtterance.voice = AVSpeechSynthesisVoice(language: voiceLanguage ? "en-US" : "en-GB")
+        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryMultiRoute)
+        try? AVAudioSession.sharedInstance().setMode(AVAudioSessionModeDefault)
         synth.speak(myUtterance)
     }
     func showListenRepeat(word:String, color:String)
@@ -418,7 +419,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         // Start audio session
         let audioSession = AVAudioSession.sharedInstance()
         do {
-            try audioSession.setCategory(AVAudioSessionCategoryRecord)
+            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
             try audioSession.setMode(AVAudioSessionModeMeasurement)
             try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         } catch {
@@ -477,6 +478,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
      Stop listening to audio and speech recognition
      */
     private func stopListening() {
+        self.audioEngine.reset()
         self.audioEngine.stop()
         self.recognitionRequest?.endAudio()
         

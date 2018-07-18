@@ -23,7 +23,7 @@ class SettingsManager
             return getValue(setting: userPointsSettingName, defValue: 0) as! Int
         }
         set {
-            setValue(setting: fontSizeSettingName, value: newValue)
+            setValue(setting: userPointsSettingName, value: newValue)
         }
     }
     static var fontSize : Int{
