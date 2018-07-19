@@ -206,6 +206,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             return
         }
         */
+        
         let labelText = "The \(word) \(color != "" ? "is \(color)" : "")"
         
         mic_listening = false
