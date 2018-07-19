@@ -31,15 +31,6 @@
                                     <constraint firstAttribute="width" constant="220" id="Yos-r9-BVr"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nzb-FW-Mni">
-                                <rect key="frame" x="77" y="244" width="220" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <size key="shadowOffset" width="2" height="2"/>
-                            </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ou-mw-Gu5">
                                 <rect key="frame" x="16" y="80" width="382" height="640"/>
                                 <subviews>
@@ -57,7 +48,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The notebook is grey" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfP-bv-uSV">
-                                        <rect key="frame" x="80.333333333333329" y="306" width="221.33333333333337" height="33.666666666666686"/>
+                                        <rect key="frame" x="8" y="306" width="366" height="33.666666666666686"/>
                                         <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -75,7 +66,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="we are leaving in a yellow submanire" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4i-53-Xx5">
-                                        <rect key="frame" x="3.3333333333333428" y="451.33333333333337" width="374.66666666666663" height="33.666666666666686"/>
+                                        <rect key="frame" x="8" y="451.33333333333337" width="366" height="67"/>
                                         <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -193,7 +184,6 @@
                         <outlet property="micStatusLabel" destination="z4i-53-Xx5" id="ag2-O2-7fk"/>
                         <outlet property="settingsButton" destination="OFN-se-AGH" id="1je-FU-Eg0"/>
                         <outlet property="squareFrame" destination="4sj-CC-bZA" id="Phi-va-Zcl"/>
-                        <outlet property="wordLabel" destination="nzb-FW-Mni" id="WBH-UJ-7j6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
