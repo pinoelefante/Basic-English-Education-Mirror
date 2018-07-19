@@ -13,7 +13,7 @@
         <!--Page View Controller-->
         <scene sceneID="Hdw-pg-rsi">
             <objects>
-                <viewController storyboardIdentifier="PageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="N40-tp-49e" customClass="PageViewController" customModule="BasicEnglishEducation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="N40-tp-49e" customClass="PageViewController" customModule="Education" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FvR-us-p1d">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,7 +28,7 @@
         <!--Onboarding1 View Controller-->
         <scene sceneID="p0h-h3-vtP">
             <objects>
-                <viewController storyboardIdentifier="Onboarding1ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GtF-wz-oOp" customClass="Onboarding1ViewController" customModule="BasicEnglishEducation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Onboarding1ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="GtF-wz-oOp" customClass="Onboarding1ViewController" customModule="Education" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x0M-Cu-LO0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -73,7 +73,7 @@
         <!--Onboarding2 View Controller-->
         <scene sceneID="exG-Dv-Xkx">
             <objects>
-                <viewController storyboardIdentifier="Onboarding2ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dlm-7h-qpr" customClass="Onboarding2ViewController" customModule="BasicEnglishEducation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Onboarding2ViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dlm-7h-qpr" customClass="Onboarding2ViewController" customModule="Education" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" id="aQ5-uT-WJs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

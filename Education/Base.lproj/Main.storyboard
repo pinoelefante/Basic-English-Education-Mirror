@@ -158,7 +158,7 @@
                         <viewLayoutGuide key="safeArea" id="hsf-O5-lVn"/>
                     </view>
                     <navigationItem key="navigationItem" id="Yp9-cI-Yry">
-                        <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="cM8-wq-k0A">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="Settings" style="plain" id="cM8-wq-k0A">
                             <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OFN-se-AGH">
                                 <rect key="frame" x="20" y="0.0" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -168,8 +168,8 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="DDH-ft-Q2L">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZfU-Ex-AfG">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="Challenges" style="plain" id="DDH-ft-Q2L">
+                            <button key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZfU-Ex-AfG">
                                 <rect key="frame" x="350" y="0.0" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="Trophy"/>
@@ -430,6 +430,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Challenges" width="372" height="372"/>
         <image name="Settings" width="21" height="21"/>
         <image name="Trophy" width="21" height="21"/>
         <image name="mic_icon" width="170" height="170"/>
