@@ -2,7 +2,21 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Logo.png"
+      "filename" : "Logo.png",
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 631,
+          "top" : 630,
+          "right" : 631,
+          "left" : 630
+        }
+      }
     }
   ],
   "info" : {
