@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C0C30E72100872800EC18AC /* ntc.js in Resources */ = {isa = PBXBuildFile; fileRef = 3C0C30E62100872800EC18AC /* ntc.js */; };
 		EA60F82020FF37CA00CA7680 /* Cartoon Relief.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA60F81F20FF37CA00CA7680 /* Cartoon Relief.ttf */; };
 		EA67967620FDD34D009551F6 /* ChallengeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67967520FDD34D009551F6 /* ChallengeManager.swift */; };
 		EA67967920FDD364009551F6 /* Education.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA67967720FDD364009551F6 /* Education.xcdatamodeld */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3C0C30E62100872800EC18AC /* ntc.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ntc.js; sourceTree = "<group>"; };
 		EA60F81F20FF37CA00CA7680 /* Cartoon Relief.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cartoon Relief.ttf"; sourceTree = "<group>"; };
 		EA67967520FDD34D009551F6 /* ChallengeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeManager.swift; sourceTree = "<group>"; };
 		EA67967820FDD364009551F6 /* Education.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Education.xcdatamodel; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				F2911F6D20F5FF660004D749 /* AppDelegate.swift */,
 				F2911F7120F5FF660004D749 /* ViewController.swift */,
 				EA8CF213210093EE00F70AEC /* Localizable.strings */,
+				3C0C30E62100872800EC18AC /* ntc.js */,
 				F2911F7320F5FF660004D749 /* Main.storyboard */,
 				F2911F7620F5FF670004D749 /* Assets.xcassets */,
 				F2911F7820F5FF670004D749 /* LaunchScreen.storyboard */,
@@ -307,6 +310,7 @@
 				F2911F7A20F5FF670004D749 /* LaunchScreen.storyboard in Resources */,
 				F2911F7720F5FF670004D749 /* Assets.xcassets in Resources */,
 				EA8CF211210093EE00F70AEC /* Localizable.strings in Resources */,
+				3C0C30E72100872800EC18AC /* ntc.js in Resources */,
 				EA60F82020FF37CA00CA7680 /* Cartoon Relief.ttf in Resources */,
 				F2911F7520F5FF660004D749 /* Main.storyboard in Resources */,
 				EAB6887A20F798A50054BC27 /* Onboarding.storyboard in Resources */,
@@ -533,7 +537,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K4BQDL97D5;
+				DEVELOPMENT_TEAM = K8WJKQA676;
 				INFOPLIST_FILE = Education/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -551,7 +555,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K4BQDL97D5;
+				DEVELOPMENT_TEAM = K8WJKQA676;
 				INFOPLIST_FILE = Education/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
