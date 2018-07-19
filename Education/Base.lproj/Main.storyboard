@@ -50,8 +50,8 @@
                                             <constraint firstAttribute="height" constant="224" id="yw2-8a-fzs"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listen &amp; repeat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXU-d5-9Q1">
-                                        <rect key="frame" x="114" y="16" width="155" height="34"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listen &amp; Repeat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXU-d5-9Q1">
+                                        <rect key="frame" x="111.00000000000001" y="16" width="161.33333333333337" height="34"/>
                                         <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="28"/>
                                         <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
