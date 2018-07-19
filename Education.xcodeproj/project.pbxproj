@@ -15,6 +15,7 @@
 		EA8CF20721006A9000F70AEC /* Onboarding1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8CF20421006A8F00F70AEC /* Onboarding1ViewController.swift */; };
 		EA8CF20821006A9000F70AEC /* Onboarding2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8CF20521006A9000F70AEC /* Onboarding2ViewController.swift */; };
 		EA8CF20921006A9000F70AEC /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8CF20621006A9000F70AEC /* PageViewController.swift */; };
+		EA8CF211210093EE00F70AEC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA8CF213210093EE00F70AEC /* Localizable.strings */; };
 		EAB6887620F769F90054BC27 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB6887520F769F90054BC27 /* SettingsViewController.swift */; };
 		EAB6887A20F798A50054BC27 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB6887920F798A50054BC27 /* Onboarding.storyboard */; };
 		EAC5DDB820F762D900BB4D95 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5DDB720F762D900BB4D95 /* SettingsManager.swift */; };
@@ -58,6 +59,9 @@
 		EA8CF20421006A8F00F70AEC /* Onboarding1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding1ViewController.swift; sourceTree = "<group>"; };
 		EA8CF20521006A9000F70AEC /* Onboarding2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding2ViewController.swift; sourceTree = "<group>"; };
 		EA8CF20621006A9000F70AEC /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		EA8CF20C2100931800F70AEC /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
+		EA8CF20E2100933800F70AEC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		EA8CF212210093EE00F70AEC /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EAB6887520F769F90054BC27 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EAB6887920F798A50054BC27 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		EAC5DDB720F762D900BB4D95 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 				F2AD0F8A20F74956001EA2FE /* Inceptionv3.mlmodel */,
 				F2911F6D20F5FF660004D749 /* AppDelegate.swift */,
 				F2911F7120F5FF660004D749 /* ViewController.swift */,
+				EA8CF213210093EE00F70AEC /* Localizable.strings */,
 				3C0C30E62100872800EC18AC /* ntc.js */,
 				F2911F7320F5FF660004D749 /* Main.storyboard */,
 				F2911F7620F5FF670004D749 /* Assets.xcassets */,
@@ -304,6 +309,7 @@
 			files = (
 				F2911F7A20F5FF670004D749 /* LaunchScreen.storyboard in Resources */,
 				F2911F7720F5FF670004D749 /* Assets.xcassets in Resources */,
+				EA8CF211210093EE00F70AEC /* Localizable.strings in Resources */,
 				3C0C30E72100872800EC18AC /* ntc.js in Resources */,
 				EA60F82020FF37CA00CA7680 /* Cartoon Relief.ttf in Resources */,
 				F2911F7520F5FF660004D749 /* Main.storyboard in Resources */,
@@ -381,10 +387,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		EA8CF213210093EE00F70AEC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA8CF212210093EE00F70AEC /* it */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F2911F7320F5FF660004D749 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F2911F7420F5FF660004D749 /* Base */,
+				EA8CF20C2100931800F70AEC /* it */,
+				EA8CF20E2100933800F70AEC /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -404,6 +420,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -464,6 +481,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
