@@ -1,0 +1,12 @@
+
+/* Class = "UITextView"; text = "Vai alla ricerca di oggetti e impara i loro nomi e colori in inglese"; ObjectID = "9B2-gd-kfn"; */
+"9B2-gd-kfn.text" = "Research objects and learn their english names and colours";
+
+/* Class = "UIButton"; normalTitle = "INIZIA"; ObjectID = "PoJ-nh-Hhk"; */
+"PoJ-nh-Hhk.normalTitle" = "START";
+
+/* Class = "UITextView"; text = "Ripeti e impara la pronuncia delle parole e dei colori"; ObjectID = "bPg-fE-aae"; */
+"bPg-fE-aae.text" = "Repeat and learn colours and names pronunciations";
+
+/* Class = "UITextView"; text = "Completa le sfide proposte e guadagna punti"; ObjectID = "vpf-B3-LXE"; */
+"vpf-B3-LXE.text" = "Complete proposed challenges and earn points";
