@@ -238,6 +238,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                 {
                     print("Start listening")
                     self.mic_listening = true
+                    self.micStatusLabel.textColor = UIColor.black;
                     if granted {
                         self.startListening()
                         self.micStatusLabel.text = "Listening..."
