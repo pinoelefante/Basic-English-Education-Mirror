@@ -122,20 +122,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iphone-6s-psd-mock-up-4" translatesAutoresizingMaskIntoConstraints="NO" id="dZi-Xq-ZzP">
-                                <rect key="frame" x="57" y="20" width="261" height="451"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="451" id="1aF-5W-F9U"/>
-                                </constraints>
-                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cold-fog-foggy-773953" translatesAutoresizingMaskIntoConstraints="NO" id="cnY-ty-Htj">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPg-fE-aae" userLabel="Testo">
-                                <rect key="frame" x="0.0" y="428" width="375" height="169"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PoJ-nh-Hhk">
                                 <rect key="frame" x="20" y="605" width="335" height="42"/>
                                 <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -146,39 +135,46 @@
                                     <action selector="startTapped:" destination="BQi-yk-bFb" eventType="touchUpInside" id="pRZ-eW-7ui"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="screenshot1" translatesAutoresizingMaskIntoConstraints="NO" id="nfh-7v-pTv">
-                                <rect key="frame" x="107" y="93" width="161" height="284"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iphone" translatesAutoresizingMaskIntoConstraints="NO" id="KaL-5Z-m4O">
+                                <rect key="frame" x="95.5" y="35" width="184" height="373"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="161" id="WVE-ew-IEf"/>
-                                    <constraint firstAttribute="height" constant="284" id="lX6-bF-aKf"/>
+                                    <constraint firstAttribute="height" constant="373" id="Fp7-jY-Zlv"/>
+                                    <constraint firstAttribute="width" constant="184" id="SmG-ZF-xMw"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="screenshot1" translatesAutoresizingMaskIntoConstraints="NO" id="IX2-R1-Rtf">
+                                <rect key="frame" x="111" y="78" width="154" height="273"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="273" id="2n4-t6-83H"/>
+                                    <constraint firstAttribute="width" constant="154" id="CIH-fJ-2iS"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor " textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPg-fE-aae" userLabel="Testo">
+                                <rect key="frame" x="20" y="428" width="335" height="157"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cnY-ty-Htj" firstAttribute="leading" secondItem="ntZ-GN-T74" secondAttribute="leading" id="01w-JT-Nw3"/>
+                            <constraint firstItem="IX2-R1-Rtf" firstAttribute="top" secondItem="ntZ-GN-T74" secondAttribute="top" constant="58" id="3bB-vO-oUW"/>
                             <constraint firstItem="ntZ-GN-T74" firstAttribute="trailing" secondItem="PoJ-nh-Hhk" secondAttribute="trailing" constant="20" id="7nu-Xw-QYR"/>
+                            <constraint firstItem="KaL-5Z-m4O" firstAttribute="top" secondItem="ntZ-GN-T74" secondAttribute="top" constant="15" id="93o-cc-zQr"/>
+                            <constraint firstItem="KaL-5Z-m4O" firstAttribute="centerX" secondItem="o59-O4-Wxm" secondAttribute="centerX" id="9hb-CU-Kyn"/>
                             <constraint firstItem="cnY-ty-Htj" firstAttribute="top" secondItem="ntZ-GN-T74" secondAttribute="top" id="FpC-Rx-rBr"/>
-                            <constraint firstItem="bPg-fE-aae" firstAttribute="leading" secondItem="cnY-ty-Htj" secondAttribute="leading" id="HPJ-Uz-xbB"/>
-                            <constraint firstItem="ntZ-GN-T74" firstAttribute="trailing" secondItem="dZi-Xq-ZzP" secondAttribute="trailing" constant="57" id="MWg-Gv-yCf"/>
                             <constraint firstItem="cnY-ty-Htj" firstAttribute="trailing" secondItem="ntZ-GN-T74" secondAttribute="trailing" id="Ogc-gH-Qne"/>
-                            <constraint firstItem="dZi-Xq-ZzP" firstAttribute="top" secondItem="ntZ-GN-T74" secondAttribute="top" id="P3z-jz-F74"/>
+                            <constraint firstItem="ntZ-GN-T74" firstAttribute="trailing" secondItem="bPg-fE-aae" secondAttribute="trailing" constant="20" id="TLt-BY-9wK"/>
                             <constraint firstItem="cnY-ty-Htj" firstAttribute="bottom" secondItem="ntZ-GN-T74" secondAttribute="bottom" id="U6w-Nv-W95"/>
-                            <constraint firstItem="dZi-Xq-ZzP" firstAttribute="leading" secondItem="ntZ-GN-T74" secondAttribute="leading" constant="57" id="WeM-Kj-ILa"/>
-                            <constraint firstItem="PoJ-nh-Hhk" firstAttribute="top" secondItem="bPg-fE-aae" secondAttribute="bottom" constant="8" symbolic="YES" id="aFz-c0-Inf"/>
-                            <constraint firstItem="nfh-7v-pTv" firstAttribute="top" secondItem="ntZ-GN-T74" secondAttribute="top" constant="73" id="aHO-Vr-HTl"/>
+                            <constraint firstItem="PoJ-nh-Hhk" firstAttribute="top" secondItem="bPg-fE-aae" secondAttribute="bottom" constant="20" id="Zv3-Ue-GkO"/>
                             <constraint firstItem="ntZ-GN-T74" firstAttribute="bottom" secondItem="PoJ-nh-Hhk" secondAttribute="bottom" constant="20" id="b1z-dK-Y32"/>
-                            <constraint firstItem="nfh-7v-pTv" firstAttribute="leading" secondItem="ntZ-GN-T74" secondAttribute="leading" constant="107" id="b5N-dA-0DL"/>
                             <constraint firstItem="PoJ-nh-Hhk" firstAttribute="leading" secondItem="ntZ-GN-T74" secondAttribute="leading" constant="20" id="bVM-D6-7hF"/>
-                            <constraint firstItem="nfh-7v-pTv" firstAttribute="centerX" secondItem="bPg-fE-aae" secondAttribute="centerX" id="bkp-2X-d6Z"/>
-                            <constraint firstItem="bPg-fE-aae" firstAttribute="top" secondItem="nfh-7v-pTv" secondAttribute="bottom" constant="51" id="lGn-pV-roI"/>
-                            <constraint firstItem="ntZ-GN-T74" firstAttribute="trailing" secondItem="nfh-7v-pTv" secondAttribute="trailing" constant="107" id="rVn-hS-3g1"/>
+                            <constraint firstItem="IX2-R1-Rtf" firstAttribute="centerX" secondItem="o59-O4-Wxm" secondAttribute="centerX" id="eFj-lY-clh"/>
+                            <constraint firstItem="bPg-fE-aae" firstAttribute="top" secondItem="KaL-5Z-m4O" secondAttribute="bottom" constant="20" id="sD1-ne-dlD"/>
+                            <constraint firstItem="bPg-fE-aae" firstAttribute="leading" secondItem="ntZ-GN-T74" secondAttribute="leading" constant="20" id="tIm-RK-9V8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ntZ-GN-T74"/>
                     </view>
-                    <connections>
-                        <outlet property="imageView" destination="nfh-7v-pTv" id="9pn-Ye-lip"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z9F-Xz-xma" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -190,7 +186,7 @@
         <image name="Cube" width="459" height="459"/>
         <image name="alphabet-board-game-conceptual-256428" width="3886" height="2181"/>
         <image name="cold-fog-foggy-773953" width="5760" height="3840"/>
-        <image name="iphone-6s-psd-mock-up-4" width="1447" height="1087"/>
+        <image name="iphone" width="406" height="827"/>
         <image name="screenshot1" width="750" height="1205"/>
     </resources>
 </document>
