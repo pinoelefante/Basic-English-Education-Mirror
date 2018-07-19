@@ -15,7 +15,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
     lazy var subViewControllers:[UIViewController] = {
         return [
             UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Onboarding1ViewController") as! Onboarding1ViewController,
-            UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Onboarding2ViewController") as! Onboarding2ViewController
+            UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Onboarding2ViewController") as! Onboarding2ViewController,
+            UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(withIdentifier: "Onboarding3ViewController") as! Onboarding3ViewController
         ]
     }()
     

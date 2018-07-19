@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3C0C30E72100872800EC18AC /* ntc.js in Resources */ = {isa = PBXBuildFile; fileRef = 3C0C30E62100872800EC18AC /* ntc.js */; };
+		3C0C30E9210097B000EC18AC /* Onboarding3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0C30E8210097B000EC18AC /* Onboarding3ViewController.swift */; };
+		3CB0A2EA2100BDAA00D79446 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0A2E92100BDAA00D79446 /* Gif.swift */; };
 		EA60F82020FF37CA00CA7680 /* Cartoon Relief.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA60F81F20FF37CA00CA7680 /* Cartoon Relief.ttf */; };
 		EA67967620FDD34D009551F6 /* ChallengeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67967520FDD34D009551F6 /* ChallengeManager.swift */; };
 		EA67967920FDD364009551F6 /* Education.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA67967720FDD364009551F6 /* Education.xcdatamodeld */; };
@@ -51,6 +53,8 @@
 
 /* Begin PBXFileReference section */
 		3C0C30E62100872800EC18AC /* ntc.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ntc.js; sourceTree = "<group>"; };
+		3C0C30E8210097B000EC18AC /* Onboarding3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding3ViewController.swift; sourceTree = "<group>"; };
+		3CB0A2E92100BDAA00D79446 /* Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
 		EA60F81F20FF37CA00CA7680 /* Cartoon Relief.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cartoon Relief.ttf"; sourceTree = "<group>"; };
 		EA67967520FDD34D009551F6 /* ChallengeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeManager.swift; sourceTree = "<group>"; };
 		EA67967820FDD364009551F6 /* Education.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Education.xcdatamodel; sourceTree = "<group>"; };
@@ -162,6 +166,8 @@
 				EAC5DDB720F762D900BB4D95 /* SettingsManager.swift */,
 				EAB6887520F769F90054BC27 /* SettingsViewController.swift */,
 				EAB6887920F798A50054BC27 /* Onboarding.storyboard */,
+				3C0C30E8210097B000EC18AC /* Onboarding3ViewController.swift */,
+				3CB0A2E92100BDAA00D79446 /* Gif.swift */,
 				EA8CF20421006A8F00F70AEC /* Onboarding1ViewController.swift */,
 				EA8CF20521006A9000F70AEC /* Onboarding2ViewController.swift */,
 				EA8CF20621006A9000F70AEC /* PageViewController.swift */,
@@ -336,11 +342,13 @@
 				EAE07B4620FF912E0076E884 /* CVPixelBuffer+Helpers.swift in Sources */,
 				EAE07B4520FF912B0076E884 /* UIImage+CVPixelBuffer.swift in Sources */,
 				EA8CF20721006A9000F70AEC /* Onboarding1ViewController.swift in Sources */,
+				3C0C30E9210097B000EC18AC /* Onboarding3ViewController.swift in Sources */,
 				EA67967B20FE07B4009551F6 /* ChallengeTableViewController.swift in Sources */,
 				EA67967920FDD364009551F6 /* Education.xcdatamodeld in Sources */,
 				EAB6887620F769F90054BC27 /* SettingsViewController.swift in Sources */,
 				EA8CF20921006A9000F70AEC /* PageViewController.swift in Sources */,
 				EAE07B4420FF90D10076E884 /* UIImageExt.swift in Sources */,
+				3CB0A2EA2100BDAA00D79446 /* Gif.swift in Sources */,
 				EA67967620FDD34D009551F6 /* ChallengeManager.swift in Sources */,
 				EAC5DDB820F762D900BB4D95 /* SettingsManager.swift in Sources */,
 				F2911F7220F5FF660004D749 /* ViewController.swift in Sources */,

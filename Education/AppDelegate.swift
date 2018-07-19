@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        if(SettingsManager.isFirstStart)
+        if(true)//SettingsManager.isFirstStart)
         {
             let onboardingStory = UIStoryboard(name: "Onboarding", bundle: nil)
             let nextView: PageViewController = onboardingStory.instantiateViewController(withIdentifier: "PageViewController") as!  PageViewController
