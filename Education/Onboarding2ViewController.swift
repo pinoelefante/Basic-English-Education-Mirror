@@ -28,7 +28,7 @@ class Onboarding2ViewController: UIViewController {
     @IBAction func startTapped(_ sender: UIButton) {
         SettingsManager.isFirstStart = false
         let mainStory = UIStoryboard(name: "Main", bundle: nil)
-        let nextView: ViewController = mainStory.instantiateViewController(withIdentifier: "ViewController") as!  ViewController
+        let nextView:UINavigationController = mainStory.instantiateViewController(withIdentifier: "MainNavigationController") as!  UINavigationController
         let app_delegate = UIApplication.shared.delegate as! AppDelegate
         app_delegate.window?.rootViewController = nextView
     }
