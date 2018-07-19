@@ -1,0 +1,60 @@
+
+/* Class = "UILabel"; text = "Listen & repeat"; ObjectID = "8Ag-XZ-ZIR"; */
+"8Ag-XZ-ZIR.text" = "Ascolta e Ripeti";
+
+/* Class = "UILabel"; text = "Voice on"; ObjectID = "BfL-JE-v7C"; */
+"BfL-JE-v7C.text" = "Voce attiva";
+
+/* Class = "UILabel"; text = "The cat is black the cat is still black"; ObjectID = "JfP-bv-uSV"; */
+"JfP-bv-uSV.text" = "Goku is black Goku is still black";
+
+/* Class = "UILabel"; text = "0.8"; ObjectID = "JlP-TZ-UHC"; */
+"JlP-TZ-UHC.text" = "0.8";
+
+/* Class = "UILabel"; text = "Listen & repeat incompleted"; ObjectID = "KgP-Z7-Zst"; */
+"KgP-Z7-Zst.text" = "Ascolta & ripeti incompleta";
+
+/* Class = "UILabel"; text = "16"; ObjectID = "MVB-m4-0vL"; */
+"MVB-m4-0vL.text" = "16";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "O2Q-gQ-13o"; */
+"O2Q-gQ-13o.normalTitle" = "Chiudi";
+
+/* Class = "UILabel"; text = "+10"; ObjectID = "Qex-Jc-9Hv"; */
+"Qex-Jc-9Hv.text" = "+10";
+
+/* Class = "UILabel"; text = "Voice rate"; ObjectID = "RG3-Y5-23q"; */
+"RG3-Y5-23q.text" = "Grado di voce";
+
+/* Class = "UIButton"; normalTitle = "MIC"; ObjectID = "SPV-JB-e5S"; */
+"SPV-JB-e5S.normalTitle" = "MIC";
+
+/* Class = "UILabel"; text = "nome challenge"; ObjectID = "YoY-Qd-COo"; */
+"YoY-Qd-COo.text" = "Nome sfida";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "cM8-wq-k0A"; */
+"cM8-wq-k0A.title" = "Item";
+
+/* Class = "UILabel"; text = "Challenge complete"; ObjectID = "rMk-sh-r6F"; */
+"rMk-sh-r6F.text" = "Sfida completa";
+
+/* Class = "UISegmentedControl"; rO9-lg-o5j.segmentTitles[0] = "Female"; ObjectID = "rO9-lg-o5j"; */
+"rO9-lg-o5j.segmentTitles[0]" = "Femmina";
+
+/* Class = "UISegmentedControl"; rO9-lg-o5j.segmentTitles[1] = "Male"; ObjectID = "rO9-lg-o5j"; */
+"rO9-lg-o5j.segmentTitles[1]" = "Maschio";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "rXY-zi-Rbq"; */
+"rXY-zi-Rbq.text" = "0";
+
+/* Class = "UILabel"; text = "Listen & repeat"; ObjectID = "sXU-d5-9Q1"; */
+"sXU-d5-9Q1.text" = "Ascolta & ripeti";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "wE4-gw-5yx"; */
+"wE4-gw-5yx.text" = "Label";
+
+/* Class = "UILabel"; text = "Font size"; ObjectID = "xbQ-Tq-J9n"; */
+"xbQ-Tq-J9n.text" = "Font size";
+
+/* Class = "UILabel"; text = "we are leaving in a yellow submanire"; ObjectID = "z4i-53-Xx5"; */
+"z4i-53-Xx5.text" = "we are leaving in a yellow submanire";

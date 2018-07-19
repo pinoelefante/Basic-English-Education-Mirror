@@ -8,50 +8,29 @@
 
 import UIKit
 
-class SettingsViewController : UIViewController
+class SettingsViewController : UITableViewController
 {
     @IBOutlet weak var soundOn: UISwitch!
-    @IBOutlet weak var textSizeSlider: UISlider!
-    @IBOutlet weak var textSizeLabel: UILabel!
     @IBOutlet weak var voiceRateSlider: UISlider!
     @IBOutlet weak var voiceRateLabel: UILabel!
     @IBOutlet weak var voiceTypeSelector: UISegmentedControl!
-    @IBOutlet weak var voiceRateContainer: UIStackView!
-    @IBOutlet weak var listenRepeatSwitch: UISwitch!
-    @IBOutlet weak var listenRepeatContainer: UIStackView!
-    @IBOutlet weak var listenRepeatOnlyIncompleteContainer: UIStackView!
-    @IBOutlet weak var listenRepeatOnlyIncompleteSwitch: UISwitch!
-    
+    lazy var cartoonFont = UIFont(name: "Cartoon Relief", size: 28)
     override func viewDidLoad() {
-        let cartoonFont = UIFont(name: "Cartoon Relief", size: 28)
-        voiceTypeSelector.setTitleTextAttributes([NSAttributedStringKey.font: cartoonFont!], for: .normal)
+//        voiceTypeSelector.setTitleTextAttributes([NSAttributedStringKey.font: cartoonFont!], for: .normal)
     }
-    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = cartoonFont
+    }
     override func viewWillAppear(_ animated: Bool) {
         self.soundOn.isOn = SettingsManager.isSoundOn
-        self.textSizeSlider.value = Float(SettingsManager.fontSize)
-        self.textSizeLabel.text = "\(SettingsManager.fontSize)"
+        
         self.voiceTypeSelector.selectedSegmentIndex = SettingsManager.isSoundVoiceFemale ? 0 : 1
-        self.voiceTypeSelector.isHidden = !SettingsManager.isSoundOn
-        self.voiceRateContainer.isHidden = !SettingsManager.isSoundOn
-        self.listenRepeatContainer.isHidden = !SettingsManager.isSoundOn
-        self.listenRepeatSwitch.isOn = SettingsManager.isListenRepeatEnabled
-        self.listenRepeatOnlyIncompleteContainer.isHidden = !(SettingsManager.isSoundOn && SettingsManager.isListenRepeatEnabled)
-        self.listenRepeatOnlyIncompleteSwitch.isOn = SettingsManager.isListenRepeatOnlyIncomplete
         self.voiceRateSlider.value = (SettingsManager.voiceRate * 10)
         self.voiceRateLabel.text = "\(SettingsManager.voiceRate * 2)"
     }
     @IBAction func soundOnChanged(_ sender: UISwitch) {
         SettingsManager.isSoundOn = soundOn.isOn
-        self.voiceTypeSelector.isHidden = !soundOn.isOn
-        self.voiceRateContainer.isHidden = !soundOn.isOn
-        self.listenRepeatContainer.isHidden = !soundOn.isOn
-        self.listenRepeatOnlyIncompleteContainer.isHidden = !(soundOn.isOn && SettingsManager.isListenRepeatEnabled)
-    }
-    @IBAction func textsizeChanged(_ sender: UISlider) {
-        let fontSize = Int(textSizeSlider.value);
-        SettingsManager.fontSize = fontSize
-        textSizeLabel.text = fontSize.description
     }
     @IBAction func voiceRateChanged(_ sender: UISlider) {
         let value = Int(sender.value)
@@ -62,12 +41,5 @@ class SettingsViewController : UIViewController
     @IBAction func voiceTypeChanged(_ sender: UISegmentedControl) {
         let index = sender.selectedSegmentIndex
         SettingsManager.isSoundVoiceFemale = index == 0
-    }
-    @IBAction func listenRepeatChanged(_ sender: UISwitch) {
-        SettingsManager.isListenRepeatEnabled = sender.isOn
-        self.listenRepeatOnlyIncompleteContainer.isHidden = !(sender.isOn && SettingsManager.isSoundOn)
-    }
-    @IBAction func listenRepeatOnlyIncompleteChanged(_ sender: UISwitch) {
-        SettingsManager.isListenRepeatOnlyIncomplete = sender.isOn
     }
 }
