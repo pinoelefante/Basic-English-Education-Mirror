@@ -11,9 +11,6 @@
 /* Class = "UILabel"; text = "0.8"; ObjectID = "JlP-TZ-UHC"; */
 "JlP-TZ-UHC.text" = "0.8";
 
-/* Class = "UILabel"; text = "Listen & repeat incompleted"; ObjectID = "KgP-Z7-Zst"; */
-"KgP-Z7-Zst.text" = "Ascolta & ripeti incompleta";
-
 /* Class = "UILabel"; text = "16"; ObjectID = "MVB-m4-0vL"; */
 "MVB-m4-0vL.text" = "16";
 
@@ -48,7 +45,7 @@
 "rXY-zi-Rbq.text" = "0";
 
 /* Class = "UILabel"; text = "Listen & repeat"; ObjectID = "sXU-d5-9Q1"; */
-"sXU-d5-9Q1.text" = "Ascolta & ripeti";
+"sXU-d5-9Q1.text" = "Ascolta & Ripeti";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "wE4-gw-5yx"; */
 "wE4-gw-5yx.text" = "Label";
