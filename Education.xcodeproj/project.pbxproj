@@ -11,9 +11,11 @@
 		EA67967620FDD34D009551F6 /* ChallengeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67967520FDD34D009551F6 /* ChallengeManager.swift */; };
 		EA67967920FDD364009551F6 /* Education.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA67967720FDD364009551F6 /* Education.xcdatamodeld */; };
 		EA67967B20FE07B4009551F6 /* ChallengeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67967A20FE07B4009551F6 /* ChallengeTableViewController.swift */; };
+		EA8CF20721006A9000F70AEC /* Onboarding1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8CF20421006A8F00F70AEC /* Onboarding1ViewController.swift */; };
+		EA8CF20821006A9000F70AEC /* Onboarding2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8CF20521006A9000F70AEC /* Onboarding2ViewController.swift */; };
+		EA8CF20921006A9000F70AEC /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8CF20621006A9000F70AEC /* PageViewController.swift */; };
 		EAB6887620F769F90054BC27 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB6887520F769F90054BC27 /* SettingsViewController.swift */; };
 		EAB6887A20F798A50054BC27 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB6887920F798A50054BC27 /* Onboarding.storyboard */; };
-		EAB6887C20F799AC0054BC27 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB6887B20F799AC0054BC27 /* OnboardingViewController.swift */; };
 		EAC5DDB820F762D900BB4D95 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC5DDB720F762D900BB4D95 /* SettingsManager.swift */; };
 		EAE07B4420FF90D10076E884 /* UIImageExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE07B4320FF90D10076E884 /* UIImageExt.swift */; };
 		EAE07B4520FF912B0076E884 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE07B4120FF90920076E884 /* UIImage+CVPixelBuffer.swift */; };
@@ -53,9 +55,11 @@
 		EA67967520FDD34D009551F6 /* ChallengeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeManager.swift; sourceTree = "<group>"; };
 		EA67967820FDD364009551F6 /* Education.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Education.xcdatamodel; sourceTree = "<group>"; };
 		EA67967A20FE07B4009551F6 /* ChallengeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewController.swift; sourceTree = "<group>"; };
+		EA8CF20421006A8F00F70AEC /* Onboarding1ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding1ViewController.swift; sourceTree = "<group>"; };
+		EA8CF20521006A9000F70AEC /* Onboarding2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Onboarding2ViewController.swift; sourceTree = "<group>"; };
+		EA8CF20621006A9000F70AEC /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		EAB6887520F769F90054BC27 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EAB6887920F798A50054BC27 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
-		EAB6887B20F799AC0054BC27 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		EAC5DDB720F762D900BB4D95 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		EAE07B4120FF90920076E884 /* UIImage+CVPixelBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+CVPixelBuffer.swift"; sourceTree = "<group>"; };
 		EAE07B4220FF90970076E884 /* CVPixelBuffer+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Helpers.swift"; sourceTree = "<group>"; };
@@ -161,7 +165,9 @@
 				EAC5DDB720F762D900BB4D95 /* SettingsManager.swift */,
 				EAB6887520F769F90054BC27 /* SettingsViewController.swift */,
 				EAB6887920F798A50054BC27 /* Onboarding.storyboard */,
-				EAB6887B20F799AC0054BC27 /* OnboardingViewController.swift */,
+				EA8CF20421006A8F00F70AEC /* Onboarding1ViewController.swift */,
+				EA8CF20521006A9000F70AEC /* Onboarding2ViewController.swift */,
+				EA8CF20621006A9000F70AEC /* PageViewController.swift */,
 				EA67967520FDD34D009551F6 /* ChallengeManager.swift */,
 				EA67967720FDD364009551F6 /* Education.xcdatamodeld */,
 				EA67967A20FE07B4009551F6 /* ChallengeTableViewController.swift */,
@@ -331,16 +337,18 @@
 				F2AD0F8B20F74956001EA2FE /* Inceptionv3.mlmodel in Sources */,
 				EAE07B4620FF912E0076E884 /* CVPixelBuffer+Helpers.swift in Sources */,
 				EAE07B4520FF912B0076E884 /* UIImage+CVPixelBuffer.swift in Sources */,
+				EA8CF20721006A9000F70AEC /* Onboarding1ViewController.swift in Sources */,
 				EA67967B20FE07B4009551F6 /* ChallengeTableViewController.swift in Sources */,
 				EA67967920FDD364009551F6 /* Education.xcdatamodeld in Sources */,
 				F2AD0F8920F74883001EA2FE /* MobileNet.mlmodel in Sources */,
 				EAB6887620F769F90054BC27 /* SettingsViewController.swift in Sources */,
+				EA8CF20921006A9000F70AEC /* PageViewController.swift in Sources */,
 				EAE07B4420FF90D10076E884 /* UIImageExt.swift in Sources */,
 				EA67967620FDD34D009551F6 /* ChallengeManager.swift in Sources */,
-				EAB6887C20F799AC0054BC27 /* OnboardingViewController.swift in Sources */,
 				EAC5DDB820F762D900BB4D95 /* SettingsManager.swift in Sources */,
 				F2911F7220F5FF660004D749 /* ViewController.swift in Sources */,
 				F2911FA120F61A390004D749 /* Resnet50.mlmodel in Sources */,
+				EA8CF20821006A9000F70AEC /* Onboarding2ViewController.swift in Sources */,
 				F2911F6E20F5FF660004D749 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

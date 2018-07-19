@@ -126,21 +126,21 @@
                         <viewLayoutGuide key="safeArea" id="hsf-O5-lVn"/>
                     </view>
                     <navigationItem key="navigationItem" id="Yp9-cI-Yry">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="cM8-wq-k0A">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OFN-se-AGH">
-                                <rect key="frame" x="16" y="7" width="57" height="30"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" style="plain" id="cM8-wq-k0A">
+                            <button key="customView" opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="OFN-se-AGH">
+                                <rect key="frame" x="16" y="0.0" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Settings"/>
+                                <state key="normal" image="Settings"/>
                                 <connections>
                                     <segue destination="mmP-pZ-SAj" kind="show" id="hX9-my-VuW"/>
                                 </connections>
                             </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="DDH-ft-Q2L">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ZfU-Ex-AfG">
-                                <rect key="frame" x="282" y="7" width="77" height="30"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ZfU-Ex-AfG">
+                                <rect key="frame" x="315" y="0.0" width="44" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Challenges"/>
+                                <state key="normal" image="Trophy"/>
                                 <connections>
                                     <segue destination="xTs-CX-40S" kind="show" id="A3a-TB-wkP"/>
                                 </connections>
@@ -398,6 +398,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Settings" width="21" height="21"/>
+        <image name="Trophy" width="21" height="21"/>
         <image name="mic_icon" width="170" height="170"/>
     </resources>
 </document>
