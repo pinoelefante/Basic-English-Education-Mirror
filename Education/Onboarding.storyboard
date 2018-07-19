@@ -149,6 +149,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="screenshot1" translatesAutoresizingMaskIntoConstraints="NO" id="nfh-7v-pTv">
                                 <rect key="frame" x="107" y="93" width="161" height="284"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="161" id="WVE-ew-IEf"/>
                                     <constraint firstAttribute="height" constant="284" id="lX6-bF-aKf"/>
                                 </constraints>
                             </imageView>
