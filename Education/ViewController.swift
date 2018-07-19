@@ -206,16 +206,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             return
         }
         */
-        if(SettingsManager.isListenRepeatEnabled)
-        {
-            listenRepeatTitleLabel.text = NSLocalizedString("Listen & Repeat", comment: "ListenAndRepeatWindowTitle")
-            micButton.isHidden = false
-        }
-        else
-        {
-            listenRepeatTitleLabel.text = ""
-            micButton.isHidden = true
-        }
         let labelText = "The \(word) \(color != "" ? "is \(color)" : "")"
         
         mic_listening = false
