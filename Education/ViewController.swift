@@ -20,7 +20,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var challengeNameLabel: UILabel!
     @IBOutlet weak var challengePointsLabel: UILabel!
     
-    @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var challengesButton: UIButton!
     @IBOutlet weak var currentImage: UIImageView!
@@ -29,7 +28,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var listenRepeatLabel: UILabel!
     @IBOutlet weak var micStatusLabel: UILabel!
     @IBOutlet weak var micButton: UIButton!
-    
+    @IBOutlet weak var listenRepeatTitleLabel: UILabel!
     //Mauro
     var jsContext: JSContext!
     var copy: CVPixelBuffer!
@@ -103,7 +102,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         micButton.layer.borderColor = UIColor.blue.cgColor
         
 //        view.bringSubview(toFront: settingsButton)
-        view.bringSubview(toFront: wordLabel)
         view.bringSubview(toFront: currentImage)
         view.bringSubview(toFront: squareFrame)
 //        view.bringSubview(toFront: challengesButton)
@@ -162,9 +160,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             let search4 = self.fourSearch(image: squareImage!, word: word)
             squareImage = search4 == nil ? squareImage : UIImage(pixelBuffer: search4!)
 //            squareImage = binarySquare(image: squareImage!, word: word)
-            let objectColor = getObjectColor(image: squareImage!)
+//            let objectColor = getObjectColor(image: squareImage!)
             DispatchQueue.main.async {
-                self.setLabelText(text: word, color: objectColor)
                 self.currentImage.image = squareImage
                 self.text2speech(text: word, color: principalColor)
                 self.showListenRepeat(word: word, color: principalColor)
@@ -187,12 +184,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             self.challengePointsLabel.text = ""
         }
     }
-    func setLabelText(text:String, color:UIColor) {
-        let fontSize = SettingsManager.fontSize
-        wordLabel.text = text
-        wordLabel.font = wordLabel.font.withSize(CGFloat(Float(fontSize)))
-        wordLabel.textColor = color
-    }
     //Method to speak
     func text2speech(text:String, color:String) {
         if !SettingsManager.isSoundOn{
@@ -209,11 +200,22 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     func showListenRepeat(word:String, color:String)
     {
+        /*
         let skipComplete = SettingsManager.isListenRepeatOnlyIncomplete && ChallengeManager.isSpeechComplete(word: word)
         if(!SettingsManager.isSoundOn || !SettingsManager.isListenRepeatEnabled || skipComplete){
             return
         }
-        
+        */
+        if(SettingsManager.isListenRepeatEnabled)
+        {
+            listenRepeatTitleLabel.text = NSLocalizedString("Listen & Repeat", comment: "ListenAndRepeatWindowTitle")
+            micButton.isHidden = false
+        }
+        else
+        {
+            listenRepeatTitleLabel.text = ""
+            micButton.isHidden = true
+        }
         let labelText = "The \(word) \(color != "" ? "is \(color)" : "")"
         
         mic_listening = false

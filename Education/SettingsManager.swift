@@ -12,12 +12,9 @@ class SettingsManager
 {
     private static let soundSettingName = "SoundSetting"
     private static let soundVoiceSettingName = "SoundVoiceSetting"
-    private static let fontSizeSettingName = "FontSizeSetting"
     private static let userPointsSettingName = "PointsSetting"
     private static let firstStartSettingName = "FirstStartSetting"
     private static let voiceRateSettingName = "VoiceRateSetting"
-    private static let listenRepeatSettingName = "ListenRepeatSetting"
-    private static let listenRepeatOnlyIncompletedSettingName = "ListenRepeatIncompletedSetting"
     
     static var points : Int{
         get{
@@ -25,14 +22,6 @@ class SettingsManager
         }
         set {
             setValue(setting: userPointsSettingName, value: newValue)
-        }
-    }
-    static var fontSize : Int{
-        get{
-            return getValue(setting: fontSizeSettingName, defValue: 16) as! Int
-        }
-        set{
-            setValue(setting: fontSizeSettingName, value: newValue)
         }
     }
     static var isSoundOn : Bool {
@@ -65,22 +54,6 @@ class SettingsManager
         }
         set{
             setValue(setting: voiceRateSettingName, value: newValue)
-        }
-    }
-    static var isListenRepeatEnabled : Bool {
-        get{
-            return getValue(setting: listenRepeatSettingName, defValue: true) as! Bool
-        }
-        set{
-            setValue(setting: listenRepeatSettingName, value: newValue)
-        }
-    }
-    static var isListenRepeatOnlyIncomplete : Bool {
-        get {
-            return getValue(setting: listenRepeatOnlyIncompletedSettingName, defValue: false) as! Bool
-        }
-        set {
-            setValue(setting: listenRepeatOnlyIncompletedSettingName, value: newValue)
         }
     }
     
