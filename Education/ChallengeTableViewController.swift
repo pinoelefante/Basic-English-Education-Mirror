@@ -56,11 +56,11 @@ class ChallengeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Pending activities"
+            return NSLocalizedString("Pending activities", comment: "Attività in sospeso")
         case 1:
-            return "Completed activities"
+            return NSLocalizedString("Completed activities", comment: "Attività complete")
         case 2:
-            return "Points"
+            return NSLocalizedString("Points", comment: "Punti")
         default:
             return ""
         }
@@ -78,7 +78,7 @@ class ChallengeTableViewController: UITableViewController {
             }
             else
             {
-                cell.challengeNameLabel.text = "There aren't challenges"
+                cell.challengeNameLabel.text = NSLocalizedString("There aren't challenges",comment: "Non ci sono sfide!")
                 cell.challengePointsLabel.text = ""
             }
         case 1:
@@ -88,11 +88,11 @@ class ChallengeTableViewController: UITableViewController {
                 cell.challengePointsLabel.text = "\(c_itemn.points)"
             }
             else{
-                cell.challengeNameLabel.text = "There aren't challenges"
+                cell.challengeNameLabel.text = NSLocalizedString("There aren't challenges",comment: "Non ci sono sfide!")
                 cell.challengePointsLabel.text = ""
             }
         case 2:
-            cell.challengeNameLabel.text = "Total points"
+            cell.challengeNameLabel.text = NSLocalizedString("Total points", comment: "Punti totali")
             cell.challengePointsLabel.text = "\(SettingsManager.points)"
         default:
             break
