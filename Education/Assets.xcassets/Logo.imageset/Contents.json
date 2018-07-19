@@ -2,16 +2,21 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ee88b047-7539-4686-889c-35a6180a5322.png",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "Logo.png",
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 631,
+          "top" : 630,
+          "right" : 631,
+          "left" : 630
+        }
+      }
     }
   ],
   "info" : {
