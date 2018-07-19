@@ -28,7 +28,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var listenRepeatLabel: UILabel!
     @IBOutlet weak var micStatusLabel: UILabel!
     @IBOutlet weak var micButton: UIButton!
-    @IBOutlet weak var listenRepeatTitleLabel: UILabel!
     //Mauro
     var jsContext: JSContext!
     var copy: CVPixelBuffer!
@@ -40,6 +39,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     let modelSize = 299
     lazy var synth = AVSpeechSynthesizer()
     var lastWord: String?
+    var lastColor: String?
     var captureSession : AVCaptureSession!
     lazy var model : VNCoreMLModel? = try? VNCoreMLModel(for: Inceptionv3().model)
     var showingListenRepeat : Bool = false {
@@ -133,6 +133,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         if(!word.isEmpty && word != lastWord)
         {
+            lastColor = principalColor
             lastWord = word
             let result_seen = ChallengeManager.itemSeen(item: word)
             SettingsManager.points+=Int(result_seen.points)
@@ -186,7 +187,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     //Method to speak
     func text2speech(text:String, color:String) {
-        if !SettingsManager.isSoundOn{
+        if !SettingsManager.isSoundOn || synth.isSpeaking || mic_listening{
             return
         }
         let phrase = getPhrase(word: text, color: color)
@@ -198,15 +199,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         try? AVAudioSession.sharedInstance().setMode(AVAudioSessionModeDefault)
         synth.speak(myUtterance)
     }
+    @IBAction func repeatText2Speech(_ sender: UIButton) {
+        text2speech(text: lastWord!, color: lastColor!)
+    }
     func showListenRepeat(word:String, color:String)
     {
-        /*
-        let skipComplete = SettingsManager.isListenRepeatOnlyIncomplete && ChallengeManager.isSpeechComplete(word: word)
-        if(!SettingsManager.isSoundOn || !SettingsManager.isListenRepeatEnabled || skipComplete){
-            return
-        }
-        */
-        
         let labelText = "The \(word) \(color != "" ? "is \(color)" : "")"
         
         mic_listening = false
@@ -222,6 +219,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     @IBAction func micIsDown(_ sender: UIButton) {
 //        print("mic tapped")
+        if synth.isSpeaking{
+            return
+        }
         askMicPermission(completion: { (granted, message) in
             DispatchQueue.main.async {
                 if(self.mic_listening) // Stop listening
@@ -232,7 +232,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                         self.stopListening()
                     }
                     print(self.speechTextListened ?? "Nessun testo")
-                    if self.speechTextListened == self.listenRepeatLabel.text{
+                    let s_comparison = self.speechTextListened?.caseInsensitiveCompare(self.listenRepeatLabel.text!)
+                    if s_comparison?.rawValue == 0 {
                         ChallengeManager.setSpeechComplete(word: self.lastWord!)
                         
                         self.micStatusLabel.textColor = UIColor.green
