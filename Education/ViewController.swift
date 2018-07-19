@@ -212,7 +212,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         return "The \(word) \(color != "" ? "is \(color)" : "")"
     }
     @IBAction func micIsDown(_ sender: UIButton) {
-        print("mic tapped")
+//        print("mic tapped")
         askMicPermission(completion: { (granted, message) in
             DispatchQueue.main.async {
                 if(self.mic_listening) // Stop listening

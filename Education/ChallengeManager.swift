@@ -26,7 +26,7 @@ class ChallengeManager
             
             if(d_comp.year != n_comp.year || d_comp.month != n_comp.month || d_comp.day != n_comp.day)
             {
-                for index in 0...pendingChallenges.count
+                for index in 0...pendingChallenges.count-1
                 {
                     let item = pendingChallenges[index]
                     context.delete(item)
