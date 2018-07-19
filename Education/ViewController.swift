@@ -96,8 +96,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         view.bringSubview(toFront: currentImage)
         view.bringSubview(toFront: squareFrame)
 //        view.bringSubview(toFront: challengesButton)
-        view.bringSubview(toFront: challengeShowContainer)
         view.bringSubview(toFront: listenRepeatContainer)
+        view.bringSubview(toFront: challengeShowContainer)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -129,6 +129,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                 showChallengeComplete(challengeName: word, challengeTitle: "Challenge complete!" , points: result_seen.points)
             }
             else{
+                /*
                 switch result_seen.points{
                 case 0:
                     print("Hai già visto questo oggetto oggi")
@@ -142,6 +143,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                 default:
                     break
                 }
+                */
             }
             let search4 = self.fourSearch(image: squareImage!, word: word)
             squareImage = search4 == nil ? squareImage : UIImage(pixelBuffer: search4!)

@@ -23,33 +23,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1gv-LU-XFO">
-                                <rect key="frame" x="128" y="96" width="254" height="5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Challenge complete" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMk-sh-r6F">
-                                        <rect key="frame" x="65" y="0.0" width="150" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="+10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qex-Jc-9Hv">
-                                        <rect key="frame" x="-1" y="8" width="48" height="41"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="34"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="nome challenge" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoY-Qd-COo">
-                                        <rect key="frame" x="65" y="32" width="150" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="20"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4sj-CC-bZA">
                                 <rect key="frame" x="97" y="258" width="220" height="220"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -68,7 +41,7 @@
                                 <size key="shadowOffset" width="2" height="2"/>
                             </label>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ou-mw-Gu5">
-                                <rect key="frame" x="16" y="154" width="382" height="566"/>
+                                <rect key="frame" x="16" y="80" width="382" height="640"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kTw-Ix-Ngj">
                                         <rect key="frame" x="79" y="66" width="224" height="224"/>
@@ -78,7 +51,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Listen &amp; repeat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXU-d5-9Q1">
-                                        <rect key="frame" x="113.66666666666666" y="16" width="154.99999999999997" height="34"/>
+                                        <rect key="frame" x="114" y="16" width="155" height="34"/>
                                         <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="28"/>
                                         <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -90,7 +63,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPV-JB-e5S">
-                                        <rect key="frame" x="151.33333333333334" y="355.66666666666669" width="80" height="80"/>
+                                        <rect key="frame" x="151.66666666666666" y="355.66666666666669" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="UTu-Er-mZn"/>
                                             <constraint firstAttribute="width" constant="80" id="Yrf-c5-D0V"/>
@@ -102,13 +75,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="we are leaving in a yellow submanire" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4i-53-Xx5">
-                                        <rect key="frame" x="3.6666666666666572" y="451.66666666666663" width="374.66666666666674" height="33.666666666666686"/>
+                                        <rect key="frame" x="3.3333333333333428" y="451.66666666666663" width="374.66666666666663" height="33.666666666666686"/>
                                         <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O2Q-gQ-13o">
-                                        <rect key="frame" x="163" y="504" width="56" height="46"/>
+                                        <rect key="frame" x="163" y="578" width="56" height="46"/>
                                         <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="28"/>
                                         <state key="normal" title="Close">
                                             <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -135,19 +108,51 @@
                                     <constraint firstItem="SPV-JB-e5S" firstAttribute="centerX" secondItem="4Ou-mw-Gu5" secondAttribute="centerX" id="tPb-CI-MmJ"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1gv-LU-XFO">
+                                <rect key="frame" x="50" y="94" width="314" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Challenge complete" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMk-sh-r6F">
+                                        <rect key="frame" x="86.666666666666657" y="5" width="141" height="24"/>
+                                        <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qex-Jc-9Hv">
+                                        <rect key="frame" x="250" y="14" width="48" height="41"/>
+                                        <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="34"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nome challenge" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoY-Qd-COo">
+                                        <rect key="frame" x="16.000000000000007" y="31" width="111.66666666666669" height="24"/>
+                                        <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="YoY-Qd-COo" secondAttribute="bottom" constant="5" id="BW7-GJ-lhT"/>
+                                    <constraint firstItem="YoY-Qd-COo" firstAttribute="leading" secondItem="1gv-LU-XFO" secondAttribute="leading" constant="16" id="GFs-Lk-7E0"/>
+                                    <constraint firstItem="rMk-sh-r6F" firstAttribute="top" secondItem="1gv-LU-XFO" secondAttribute="top" constant="5" id="VR2-hk-Vqs"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qex-Jc-9Hv" secondAttribute="trailing" constant="16" id="VWF-6z-21M"/>
+                                    <constraint firstAttribute="bottom" secondItem="Qex-Jc-9Hv" secondAttribute="bottom" constant="5" id="a3s-H1-wyg"/>
+                                    <constraint firstAttribute="height" constant="60" id="gHZ-OX-Xvo"/>
+                                    <constraint firstItem="rMk-sh-r6F" firstAttribute="centerX" secondItem="1gv-LU-XFO" secondAttribute="centerX" id="nSx-3Y-xzT"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <accessibility key="accessibilityConfiguration" identifier="mainView"/>
                         <constraints>
                             <constraint firstItem="hsf-O5-lVn" firstAttribute="trailing" secondItem="4Ou-mw-Gu5" secondAttribute="trailing" constant="16" id="BgN-rb-MXl"/>
-                            <constraint firstItem="1gv-LU-XFO" firstAttribute="top" secondItem="hsf-O5-lVn" secondAttribute="top" constant="32" id="MsR-Lo-a19"/>
+                            <constraint firstItem="1gv-LU-XFO" firstAttribute="top" secondItem="hsf-O5-lVn" secondAttribute="top" constant="30" id="VbF-F8-z83"/>
                             <constraint firstItem="4Ou-mw-Gu5" firstAttribute="leading" secondItem="hsf-O5-lVn" secondAttribute="leading" constant="16" id="Wgb-ky-c5M"/>
-                            <constraint firstItem="1gv-LU-XFO" firstAttribute="leading" secondItem="hsf-O5-lVn" secondAttribute="leading" constant="128" id="YNQ-8u-JNi"/>
-                            <constraint firstAttribute="bottom" secondItem="1gv-LU-XFO" secondAttribute="bottom" constant="635" id="apu-O3-8X5"/>
-                            <constraint firstItem="hsf-O5-lVn" firstAttribute="trailing" secondItem="1gv-LU-XFO" secondAttribute="trailing" constant="32" id="kco-bz-BAX"/>
+                            <constraint firstItem="hsf-O5-lVn" firstAttribute="trailing" secondItem="1gv-LU-XFO" secondAttribute="trailing" constant="50" id="bic-H0-7yy"/>
                             <constraint firstItem="4sj-CC-bZA" firstAttribute="centerY" secondItem="xpV-lb-Zeo" secondAttribute="centerY" id="lly-dB-a2z"/>
-                            <constraint firstItem="4Ou-mw-Gu5" firstAttribute="top" secondItem="hsf-O5-lVn" secondAttribute="top" constant="90" id="ue3-0k-N5m"/>
+                            <constraint firstItem="4Ou-mw-Gu5" firstAttribute="top" secondItem="hsf-O5-lVn" secondAttribute="top" constant="16" id="ue3-0k-N5m"/>
                             <constraint firstItem="4sj-CC-bZA" firstAttribute="centerX" secondItem="xpV-lb-Zeo" secondAttribute="centerX" id="wCY-kY-78Y"/>
+                            <constraint firstItem="1gv-LU-XFO" firstAttribute="leading" secondItem="hsf-O5-lVn" secondAttribute="leading" constant="50" id="zb5-67-xIG"/>
                             <constraint firstItem="hsf-O5-lVn" firstAttribute="bottom" secondItem="4Ou-mw-Gu5" secondAttribute="bottom" constant="16" id="zxv-a4-cBJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hsf-O5-lVn"/>
@@ -192,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="967.20000000000005" y="33.990147783251231"/>
+            <point key="canvasLocation" x="966.66666666666674" y="33.423913043478265"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="fNA-cn-Eph">
