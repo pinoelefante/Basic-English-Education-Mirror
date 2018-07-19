@@ -38,6 +38,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         self.pageControl.tintColor = UIColor.black
         self.pageControl.pageIndicatorTintColor = UIColor.white
         self.pageControl.currentPageIndicatorTintColor = UIColor.black
+        self.pageControl.isEnabled = false
         self.view.addSubview(pageControl)
     }
     
