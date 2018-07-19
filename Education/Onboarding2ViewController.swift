@@ -21,10 +21,10 @@ class Onboarding2ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     override var prefersStatusBarHidden: Bool {
         return true;
     }
+    
     @IBAction func startTapped(_ sender: UIButton) {
         SettingsManager.isFirstStart = false
         let mainStory = UIStoryboard(name: "Main", bundle: nil)
