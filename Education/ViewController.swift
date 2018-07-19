@@ -11,6 +11,7 @@ import AVKit
 import AVFoundation
 import Vision
 import Speech
+import JavaScriptCore
 
 class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, SFSpeechRecognizerDelegate {
     
@@ -28,6 +29,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var listenRepeatLabel: UILabel!
     @IBOutlet weak var micStatusLabel: UILabel!
     @IBOutlet weak var micButton: UIButton!
+    
+    //Mauro
+    var jsContext: JSContext!
+    var copy: CVPixelBuffer!
+    var uicolor: UIColor!
+    var colort: UIColor!
+    var imageView: UIImageView = UIImageView()
+    let context = CIContext()
     
     let modelSize = 299
     lazy var synth = AVSpeechSynthesizer()
@@ -55,6 +64,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.initializeJS()
+        
         //Start Camera
         captureSession = AVCaptureSession()
         guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
@@ -114,7 +125,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         if (synth.isSpeaking || showingListenRepeat) {
             return
         }
+        
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        
+        let principalColor = self.getFinalColor(sampleBuffer: sampleBuffer)
         
         var squareImage = getSquareFrameContent(buffer: pixelBuffer)
         let word = getStringFromBuffer(buffer: UIImage.buffer(from: squareImage!)!) ?? ""
@@ -152,8 +166,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             DispatchQueue.main.async {
                 self.setLabelText(text: word, color: objectColor)
                 self.currentImage.image = squareImage
-                self.text2speech(text: word, color: "black")
-                self.showListenRepeat(word: word, color: "black")
+                self.text2speech(text: word, color: principalColor)
+                self.showListenRepeat(word: word, color: principalColor)
             }
         }
     }
@@ -530,5 +544,185 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         } else {
 //            micStatusLabel.text = "Recognition is not available."
         }
+    }
+    
+    func toHexString(color: UIColor) -> String {
+        var r:CGFloat = 0
+        var g:CGFloat = 0
+        var b:CGFloat = 0
+        var a:CGFloat = 0
+        
+        //getRed()
+        color.getRed(&r, green: &g, blue: &b, alpha: &a)
+        
+        let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
+        
+        return NSString(format:"#%06x", rgb) as String
+    }
+    
+    func initializeJS() {
+        self.jsContext = JSContext()
+        
+        if let jsSourcePath = Bundle.main.path(forResource: "ntc", ofType: "js") {
+            do {
+                // Load its contents to a String variable.
+                let jsSourceContents = try String(contentsOfFile: jsSourcePath)
+                
+                // Add the Javascript code that currently exists in the jsSourceContents to the Javascript Runtime through the jsContext object.
+                self.jsContext.evaluateScript(jsSourceContents)
+            }
+            catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func whichColor(color: UIColor) -> String{
+        
+        let colori = toHexString(color: color)
+        var nome: String = "Bello"
+        
+        if let functionFullname = self.jsContext.objectForKeyedSubscript("nomi") {
+            // Call the function that composes the fullname.
+            if let fullname = functionFullname.call(withArguments: [colori]) {
+                nome=fullname.toString()
+                
+            }
+        }
+        return nome
+    }
+    
+    func principalColor(color: UIColor) -> String{
+        
+        var (h,s,b,a) : (CGFloat, CGFloat, CGFloat, CGFloat) = (0,0,0,0)
+        _ = color.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
+        
+        //print("HSB range- h: \(h), s: \(s), v: \(b)")
+        
+        var colorTitle = " "
+        
+        switch (h, s, b) {
+            
+        // red
+        case (0...0.138, 0.88...1.00, 0.75...1.00):
+            colorTitle = "Red"
+        // yellow
+        case (0.139...0.175, 0.30...1.00, 0.80...1.00):
+            colorTitle = "Yellow"
+        // green
+        case (0.176...0.422, 0.30...1.00, 0.60...1.00):
+            colorTitle = "Green"
+        // teal
+        case (0.423...0.494, 0.30...1.00, 0.54...1.00):
+            colorTitle = "Teal"
+        // blue
+        case (0.495...0.667, 0.30...1.00, 0.60...1.00):
+            colorTitle = "Blue"
+        // purple
+        case (0.668...0.792, 0.30...1.00, 0.40...1.00):
+            colorTitle = "Purple"
+        // pink
+        case (0.793...0.977, 0.30...1.00, 0.80...1.00):
+            colorTitle = "Pink"
+        // brown
+        case (0...0.097, 0.50...1.00, 0.25...0.58):
+            colorTitle = "Brown"
+        // white
+        case (0...1.00, 0...0.05, 0.95...1.00):
+            colorTitle = "White"
+        // grey
+        case (0...1.00, 0, 0.25...0.94):
+            colorTitle = "Grey"
+        // black
+        case (0...1.00, 0...1.00, 0...0.07):
+            colorTitle = "Black"
+        default:
+            if whichColor(color: color).lowercased().range(of:"red") != nil {
+                colorTitle = "Red"
+            }
+            if whichColor(color: color).lowercased().range(of:"yellow") != nil {
+                colorTitle = "Yellow"
+            }
+            if whichColor(color: color).lowercased().range(of:"green") != nil {
+                colorTitle = "Green"
+            }
+            if whichColor(color: color).lowercased().range(of:"teal") != nil {
+                colorTitle = "Teal"
+            }
+            if whichColor(color: color).lowercased().range(of:"blue") != nil {
+                colorTitle = "Blue"
+            }
+            if whichColor(color: color).lowercased().range(of:"purple") != nil {
+                colorTitle = "Purple"
+            }
+            if whichColor(color: color).lowercased().range(of:"pink") != nil {
+                colorTitle = "Pink"
+            }
+            if whichColor(color: color).lowercased().range(of:"brown") != nil {
+                colorTitle = "Brown"
+            }
+            if whichColor(color: color).lowercased().range(of:"white") != nil {
+                colorTitle = "White"
+            }
+            if whichColor(color: color).lowercased().range(of:"grey") != nil {
+                colorTitle = "Grey"
+            }
+            if whichColor(color: color).lowercased().range(of:"black") != nil {
+                colorTitle = "Black"
+            }
+        }
+        
+        return colorTitle
+    }
+    
+    private func getFinalColor(sampleBuffer: CMSampleBuffer) -> String{
+        
+        let image = self.imageFromSampleBuffer(sampleBuffer: sampleBuffer)
+        imageView.image = image
+        
+        let screenCentre : CGPoint = CGPoint(x: view.center.x, y: view.center.y)
+        colort = self.imageView.image?.getPixelColor(pos: screenCentre)
+        
+        let col = self.principalColor(color: self.colort)
+        let col1 = self.whichColor(color: self.colort)
+        var principal = col1
+        if(col == " ")
+        {
+            principal = col1
+        }
+        else
+        {
+            principal = col
+        }
+        
+        return principal
+    }
+    
+    private func imageFromSampleBuffer(sampleBuffer: CMSampleBuffer) -> UIImage? {
+        guard let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return nil }
+        let ciImage = CIImage(cvPixelBuffer: imageBuffer)
+        guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else { return nil }
+        return UIImage(cgImage: cgImage)
+    }
+}
+
+extension UIImage {
+    
+    func getPixelColor(pos: CGPoint) -> UIColor? {
+        
+        guard let cgImage = cgImage, let pixelData = cgImage.dataProvider?.data else { return nil }
+        
+        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
+        
+        let bytesPerPixel = cgImage.bitsPerPixel / 8
+        
+        let pixelInfo: Int = ((cgImage.bytesPerRow * Int(pos.y)) + (Int(pos.x) * bytesPerPixel))
+        
+        let b = CGFloat(data[pixelInfo]) / CGFloat(255.0)
+        let g = CGFloat(data[pixelInfo+1]) / CGFloat(255.0)
+        let r = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
+        let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
+        
+        return UIColor(red: r, green: g, blue: b, alpha: a)
     }
 }
