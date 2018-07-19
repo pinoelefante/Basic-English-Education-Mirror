@@ -57,13 +57,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The cat is black the cat is still black" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfP-bv-uSV">
-                                        <rect key="frame" x="8" y="306" width="381.33333333333331" height="33.666666666666686"/>
+                                        <rect key="frame" x="8" y="306" width="366" height="67"/>
                                         <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPV-JB-e5S">
-                                        <rect key="frame" x="151.66666666666666" y="355.66666666666669" width="80" height="80"/>
+                                        <rect key="frame" x="151.66666666666666" y="389" width="80" height="80"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="UTu-Er-mZn"/>
                                             <constraint firstAttribute="width" constant="80" id="Yrf-c5-D0V"/>
@@ -75,7 +75,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="we are leaving in a yellow submanire" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4i-53-Xx5">
-                                        <rect key="frame" x="8" y="451.66666666666663" width="382" height="33.666666666666686"/>
+                                        <rect key="frame" x="8" y="485" width="366" height="67"/>
                                         <fontDescription key="fontDescription" name="CartoonRelief" family="Cartoon Relief" pointSize="28"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -96,13 +96,10 @@
                                     <constraint firstItem="JfP-bv-uSV" firstAttribute="leading" secondItem="4Ou-mw-Gu5" secondAttribute="leading" constant="8" id="1en-dV-H4y"/>
                                     <constraint firstItem="SPV-JB-e5S" firstAttribute="top" secondItem="JfP-bv-uSV" secondAttribute="bottom" constant="16" id="5nm-QK-vTp"/>
                                     <constraint firstItem="kTw-Ix-Ngj" firstAttribute="centerX" secondItem="4Ou-mw-Gu5" secondAttribute="centerX" id="6BH-GQ-jzV"/>
-                                    <constraint firstItem="JfP-bv-uSV" firstAttribute="centerX" secondItem="4Ou-mw-Gu5" secondAttribute="centerX" id="E07-Ze-IxI"/>
                                     <constraint firstAttribute="bottom" secondItem="O2Q-gQ-13o" secondAttribute="bottom" constant="16" id="E1l-kc-G4G"/>
                                     <constraint firstItem="sXU-d5-9Q1" firstAttribute="centerX" secondItem="4Ou-mw-Gu5" secondAttribute="centerX" id="JqB-xx-bpn"/>
-                                    <constraint firstItem="JfP-bv-uSV" firstAttribute="width" secondItem="4Ou-mw-Gu5" secondAttribute="width" id="L8D-N8-N3V"/>
                                     <constraint firstItem="O2Q-gQ-13o" firstAttribute="centerX" secondItem="4Ou-mw-Gu5" secondAttribute="centerX" id="Lj9-qt-gFs"/>
                                     <constraint firstItem="kTw-Ix-Ngj" firstAttribute="top" secondItem="sXU-d5-9Q1" secondAttribute="bottom" constant="16" id="WYp-iq-Wdl"/>
-                                    <constraint firstItem="z4i-53-Xx5" firstAttribute="centerX" secondItem="4Ou-mw-Gu5" secondAttribute="centerX" id="XcT-Pj-fx1"/>
                                     <constraint firstItem="JfP-bv-uSV" firstAttribute="top" secondItem="kTw-Ix-Ngj" secondAttribute="bottom" constant="16" id="aZg-NU-1Sg"/>
                                     <constraint firstItem="z4i-53-Xx5" firstAttribute="leading" secondItem="4Ou-mw-Gu5" secondAttribute="leading" constant="8" id="ce1-aU-zub"/>
                                     <constraint firstItem="z4i-53-Xx5" firstAttribute="top" secondItem="SPV-JB-e5S" secondAttribute="bottom" constant="16" id="dsC-UB-AFE"/>
@@ -110,8 +107,6 @@
                                     <constraint firstItem="sXU-d5-9Q1" firstAttribute="top" secondItem="4Ou-mw-Gu5" secondAttribute="top" constant="16" id="htN-Mn-xQw"/>
                                     <constraint firstItem="SPV-JB-e5S" firstAttribute="centerX" secondItem="4Ou-mw-Gu5" secondAttribute="centerX" id="k7O-n0-G32"/>
                                     <constraint firstAttribute="trailing" secondItem="JfP-bv-uSV" secondAttribute="trailing" constant="8" id="sbA-7Z-DXr"/>
-                                    <constraint firstItem="SPV-JB-e5S" firstAttribute="centerX" secondItem="4Ou-mw-Gu5" secondAttribute="centerX" id="tPb-CI-MmJ"/>
-                                    <constraint firstItem="z4i-53-Xx5" firstAttribute="width" secondItem="4Ou-mw-Gu5" secondAttribute="width" id="xcP-1l-91j"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1gv-LU-XFO">
