@@ -128,13 +128,12 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
         
-        let principalColor = self.getFinalColor(sampleBuffer: sampleBuffer)
-        
         var squareImage = getSquareFrameContent(buffer: pixelBuffer)
         let word = getStringFromBuffer(buffer: UIImage.buffer(from: squareImage!)!) ?? ""
         
         if(!word.isEmpty && word != lastWord)
         {
+            let principalColor = self.getFinalColor(sampleBuffer: sampleBuffer)
             lastColor = principalColor
             lastWord = word
             let result_seen = ChallengeManager.itemSeen(item: word)
@@ -719,16 +718,44 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         let _: UIColor = UIColor(displayP3Red: red*255, green: green*255, blue: blue*255, alpha: 255)
         
-        let col = self.principalColor(color: self.colort)
-        let col1 = self.whichColor(color: self.colort)
+        let hex = toHexString(color: colort)
+        
+        var nameColor: ColorName = ColorName()
+        
+        //Wikipedia
+        let col = nameColor.getNameColor(hex: hex)
+        //Caggiano
+        let col1 = self.principalColor(color: self.colort)
+        //Javascript
+        let col2 = self.whichColor(color: self.colort)
+        
         var principal = col1
-        if(col == " ")
+        /*if(col == " ")
         {
-            principal = col1
+            principal = col2
         }
         else
         {
             principal = col
+        }*/
+        
+        if(col == " ")
+        {
+            if(col1 == " ")
+            {
+                principal = col2
+                print("col2")
+            }
+            else
+            {
+                principal = col1
+                print("col1")
+            }
+        }
+        else
+        {
+            principal = col
+            print("col")
         }
         
         return principal
