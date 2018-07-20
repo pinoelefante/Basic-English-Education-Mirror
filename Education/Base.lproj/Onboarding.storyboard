@@ -36,7 +36,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="onboarding1" translatesAutoresizingMaskIntoConstraints="NO" id="JdO-eR-PzV">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Vai alla ricerca di oggetti e impara i loro nomi e colori in inglese" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9B2-gd-kfn" userLabel="Testo">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Research objects and learn their english names and colours" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9B2-gd-kfn" userLabel="Testo">
                                 <rect key="frame" x="20" y="220" width="335" height="427"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -87,7 +87,7 @@
                                     <constraint firstAttribute="height" constant="100" id="rKB-SH-5JP"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Completa le sfide proposte e guadagna punti" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpf-B3-LXE">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Complete proposed challenges and earn points" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpf-B3-LXE">
                                 <rect key="frame" x="20" y="220" width="335" height="365"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -130,7 +130,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="tintColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="INIZIA"/>
+                                <state key="normal" title="START"/>
                                 <connections>
                                     <action selector="startTapped:" destination="BQi-yk-bFb" eventType="touchUpInside" id="pRZ-eW-7ui"/>
                                 </connections>
@@ -149,7 +149,7 @@
                                     <constraint firstAttribute="width" constant="154" id="CIH-fJ-2iS"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Ripeti e impara la pronuncia delle parole e dei colori" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPg-fE-aae" userLabel="Testo">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Repeat and learn colours and names pronunciations" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPg-fE-aae" userLabel="Testo">
                                 <rect key="frame" x="20" y="428" width="335" height="157"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
