@@ -13,7 +13,7 @@ import Vision
 import Speech
 import JavaScriptCore
 
-class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, SFSpeechRecognizerDelegate {
+class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate {
     
     @IBOutlet weak var challengeShowContainer: UIView!
     @IBOutlet weak var challengeTitleLabel: UILabel!
@@ -28,6 +28,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var listenRepeatLabel: UILabel!
     @IBOutlet weak var micStatusLabel: UILabel!
     @IBOutlet weak var micButton: UIButton!
+    @IBOutlet weak var repeatSpeechButton: UIButton!
     //Mauro
     var jsContext: JSContext!
     var copy: CVPixelBuffer!
@@ -52,8 +53,17 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     var mic_listening = false {
         willSet {
-            micButton.layer.borderWidth = newValue ? 2 : 0
-            
+            switch newValue {
+            case true:
+                micButton.layer.borderWidth = 2
+                break
+            case false:
+                micButton.layer.borderWidth = 0
+                if(speechTextListened.isEmpty){
+                    micStatusLabel.text = ""
+                }
+                break
+            }
         }
     }
     
@@ -66,6 +76,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initializeJS()
+        
+        synth.delegate = self
         
         //Start Camera
         captureSession = AVCaptureSession()
@@ -90,8 +102,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         dataOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
         captureSession.addOutput(dataOutput)
         
-        //currentImage.transform = CGAffineTransform.init(rotationAngle: 1.5708)
-        
         squareFrame.backgroundColor = UIColor.clear
         squareFrame.layer.borderWidth = 2
         squareFrame.layer.borderColor = UIColor.red.cgColor
@@ -103,10 +113,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         micButton.layer.cornerRadius = 15
         micButton.layer.borderColor = UIColor.blue.cgColor
         
-//        view.bringSubview(toFront: settingsButton)
+        repeatSpeechButton.layer.cornerRadius = 15
+        repeatSpeechButton.layer.borderColor = UIColor.blue.cgColor
+        
         view.bringSubview(toFront: currentImage)
         view.bringSubview(toFront: squareFrame)
-//        view.bringSubview(toFront: challengesButton)
         view.bringSubview(toFront: listenRepeatContainer)
         view.bringSubview(toFront: challengeShowContainer)
     }
@@ -142,27 +153,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                 print("Sfida completata: \(word)")
                 showChallengeComplete(challengeName: word, challengeTitle: NSLocalizedString("Challenge complete!", comment: "NotificationChallengeComplete") , points: result_seen.points)
             }
-            else{
-                /*
-                switch result_seen.points{
-                case 0:
-                    print("Hai già visto questo oggetto oggi")
-                    showChallengeComplete(challengeName: word, challengeTitle: "Già visto" , points: result_seen.points)
-                case 1:
-                    print("Hai già visto questo oggetto, ma è la prima volta che lo vedi oggi")
-                    showChallengeComplete(challengeName: word, challengeTitle: "First time today" , points: result_seen.points)
-                case 5:
-                    print("Hai visto questo oggetto per la prima volta")
-                    showChallengeComplete(challengeName: word, challengeTitle: "New object!" , points: result_seen.points)
-                default:
-                    break
-                }
-                */
-            }
             let search4 = self.fourSearch(image: squareImage!, word: word)
             squareImage = search4 == nil ? squareImage : UIImage(pixelBuffer: search4!)
-//            squareImage = binarySquare(image: squareImage!, word: word)
-//            let objectColor = getObjectColor(image: squareImage!)
             DispatchQueue.main.async {
                 self.currentImage.image = squareImage
                 self.text2speech(text: word, color: principalColor)
@@ -188,7 +180,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     //Method to speak
     func text2speech(text:String, color:String) {
-        if !SettingsManager.isSoundOn || synth.isSpeaking || mic_listening{
+        if mic_listening {
+            stopListening()
+            mic_listening = false
+        }
+        if !SettingsManager.isSoundOn || synth.isSpeaking {
             return
         }
         let phrase = getPhrase(word: text, color: color)
@@ -199,6 +195,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryMultiRoute)
         try? AVAudioSession.sharedInstance().setMode(AVAudioSessionModeDefault)
         synth.speak(myUtterance)
+        
+    }
+    // Syntethizer starts to speak
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        repeatSpeechButton.layer.borderWidth = 0
+    }
+    // Syntethizer finishes to speak
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+        repeatSpeechButton.layer.borderWidth = 2
     }
     @IBAction func repeatText2Speech(_ sender: UIButton) {
         text2speech(text: lastWord!, color: lastColor!)
@@ -219,7 +224,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         return "The \(word) \(color != "" ? "is \(color)" : "")"
     }
     @IBAction func micIsDown(_ sender: UIButton) {
-//        print("mic tapped")
         if synth.isSpeaking{
             return
         }
@@ -232,18 +236,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     if granted {
                         self.stopListening()
                     }
-                    print(self.speechTextListened ?? "Nessun testo")
-                    let s_comparison = self.speechTextListened?.caseInsensitiveCompare(self.listenRepeatLabel.text!)
-                    if s_comparison?.rawValue == 0 {
-                        ChallengeManager.setSpeechComplete(word: self.lastWord!)
-                        
-                        self.micStatusLabel.textColor = UIColor.green
-                        self.micStatusLabel.text = NSLocalizedString("Success!", comment: "MicFinishSuccess")
-                    }
-                    else {
-                        self.micStatusLabel.textColor = UIColor.red
-                        self.micStatusLabel.text = NSLocalizedString("Incomplete!", comment: "MicFinishIncomplete")
-                    }
+                    let s_comparison = self.speechTextListened.caseInsensitiveCompare(self.listenRepeatLabel.text!)
+                    self.finishSpeech(complete: s_comparison.rawValue == 0)
                 }
                 else // Start listening
                 {
@@ -251,12 +245,27 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     self.mic_listening = true
                     self.micStatusLabel.textColor = UIColor.black;
                     if granted {
-                        self.startListening()
+                        self.startListening(toFind: self.getPhrase(word: self.lastWord!, color: self.lastColor!))
+                        {
+                            self.mic_listening = false
+                            self.stopListening()
+                            self.finishSpeech(complete: true)
+                        }
                         self.micStatusLabel.text = NSLocalizedString("Listening...", comment: "MicListening")
                     }
                 }
             }
         })
+    }
+    private func finishSpeech(complete:Bool){
+        if complete {
+            ChallengeManager.setSpeechComplete(word: self.lastWord!)
+            
+            self.micStatusLabel.textColor = UIColor.green
+        }
+        else {
+            self.micStatusLabel.textColor = UIColor.red
+        }
     }
     @IBAction func closeListenRepeatAction(_ sender: UIButton) {
         if mic_listening{
@@ -280,8 +289,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         let xFrame = Float(squareFrame.frame.origin.x) * widthRatio
         let yFrame = Float(squareFrame.frame.origin.y) * heightRatio
-        
-//        print("x:\(xFrame) y:\(yFrame) width:\(frameWidth) height:\(frameHeight)")
         
         let cropRectangle = CGRect(x: Int(xFrame), y: Int(yFrame), width: Int(frameWidth), height: Int(frameHeight))
         let cropped = rotatedImage?.croppedInRect(rect: cropRectangle)
@@ -329,62 +336,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         }
         return nil
     }
-    func binarySquare(image:UIImage, word:String) -> UIImage
-    {
-        let foundV = binarySquareV(image: image, word: word)
-        if foundV != nil
-        {
-            let foundH = binarySquareH(image: foundV!, word: word)
-            return foundH != nil ? foundH! : foundV!
-        }
-        return image
-    }
-    func binarySquareV(image:UIImage, word:String) -> UIImage?
-    {
-        let middleX = image.size.width/2
-        if(Int(image.size.height) < modelSize || Int(image.size.width) < modelSize || Int(middleX) < modelSize)
-        {
-            return nil
-        }
-        let crop1 = image.croppedInRect(rect: CGRect(x: 0, y: 0, width: middleX, height: image.size.height))
-        let crop1Buffer = UIImage.buffer(from: crop1)
-        if(containObject(buffer: crop1Buffer!, word: word))
-        {
-            return crop1
-        }
-        
-        let crop2 = image.croppedInRect(rect: CGRect(x: middleX, y: 0, width: middleX, height: image.size.height))
-        let crop2Buffer = UIImage.buffer(from: crop2)
-        if(containObject(buffer: crop2Buffer!, word: word))
-        {
-            return crop2
-            
-        }
-        return image
-    }
-    func binarySquareH(image:UIImage, word:String) -> UIImage?
-    {
-        let middleY = image.size.height/2
-        if(Int(image.size.height) < modelSize || Int(image.size.width) < modelSize || Int(middleY) < modelSize)
-        {
-            return nil
-        }
-        let crop1 = image.croppedInRect(rect: CGRect(x: 0, y: 0, width: image.size.width, height: middleY))
-        let crop1Buffer = UIImage.buffer(from: crop1)
-        if(containObject(buffer: crop1Buffer!, word: word))
-        {
-            return crop1
-        }
-        
-        let crop2 = image.croppedInRect(rect: CGRect(x: 0, y: middleY, width: image.size.width, height: middleY))
-        let crop2Buffer = UIImage.buffer(from: crop2)
-        if(containObject(buffer: crop2Buffer!, word: word))
-        {
-            return crop2
-            
-        }
-        return image
-    }
     func getStringFromBuffer(buffer:CVPixelBuffer) -> String?
     {
         var stringResult : String? = nil
@@ -394,7 +345,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             
             guard let result = finishedReq.results as? [VNClassificationObservation] else { return }
             guard let firstObservation = result.first else { return }
-//            print("Screen position: \(firstObservation.accessibilityFrame)")
             let array = firstObservation.identifier.components(separatedBy: ",")
             let str = array[0]
             
@@ -421,14 +371,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 //        print("Color: "+color.description)
         return color
     }
-    var speechTextListened : String?
-    private func startListening() {
+    var speechTextListened : String = ""
+    private func startListening(toFind:String, onFind:@escaping ()->Void) {
         // Clear existing tasks
         if recognitionTask != nil {
             recognitionTask?.cancel()
             recognitionTask = nil
         }
-        
+        speechTextListened = ""
         // Start audio session
         let audioSession = AVAudioSession.sharedInstance()
         do {
@@ -459,9 +409,13 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             var isFinal = false
             
             if result != nil {
-                self.speechTextListened = result?.bestTranscription.formattedString
+                self.speechTextListened = (result?.bestTranscription.formattedString)!
                 self.micStatusLabel.text = self.speechTextListened
                 isFinal = result!.isFinal
+                let s_comparison = self.speechTextListened.caseInsensitiveCompare(toFind)
+                if s_comparison.rawValue == 0 {
+                    onFind()
+                }
             }
             
             if error != nil || isFinal {
@@ -529,18 +483,6 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             completion(granted, message)
         }
     }
-    func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
-//        tapButton.isEnabled = available
-        if available {
-            // Prepare to listen
-//            mic_listening = true
-//            micStatusLabel.text = "Tap to listen"
-//            viewTapped(tapButton)
-        } else {
-//            micStatusLabel.text = "Recognition is not available."
-        }
-    }
-    
     func toHexString(color: UIColor) -> String {
         var r:CGFloat = 0
         var g:CGFloat = 0
@@ -766,33 +708,5 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let ciImage = CIImage(cvPixelBuffer: imageBuffer)
         guard let cgImage = context.createCGImage(ciImage, from: ciImage.extent) else { return nil }
         return UIImage(cgImage: cgImage)
-    }
-}
-
-extension UIImage {
-    
-    func getPixelColor(pos: CGPoint) -> UIColor? {
-        
-        guard let cgImage = cgImage, let pixelData = cgImage.dataProvider?.data else { return nil }
-        
-        let data: UnsafePointer<UInt8> = CFDataGetBytePtr(pixelData)
-        
-        let bytesPerPixel = cgImage.bitsPerPixel / 8
-        
-        let pixelInfo: Int = ((cgImage.bytesPerRow * Int(pos.y)) + (Int(pos.x) * bytesPerPixel))
-        
-        let b = CGFloat(data[pixelInfo]) / CGFloat(255.0)
-        let g = CGFloat(data[pixelInfo+1]) / CGFloat(255.0)
-        let r = CGFloat(data[pixelInfo+2]) / CGFloat(255.0)
-        let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
-        
-        return UIColor(red: r, green: g, blue: b, alpha: a)
-    }
-}
-
-extension UIColor {
-    var components: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)? {
-        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
-        return getRed(&r, green: &g, blue: &b, alpha: &a) ? (r,g,b,a) : nil
     }
 }

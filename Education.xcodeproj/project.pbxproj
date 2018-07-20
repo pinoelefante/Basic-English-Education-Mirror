@@ -11,6 +11,7 @@
 		3C0C30E9210097B000EC18AC /* Onboarding3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C0C30E8210097B000EC18AC /* Onboarding3ViewController.swift */; };
 		3CB0A2EA2100BDAA00D79446 /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB0A2E92100BDAA00D79446 /* Gif.swift */; };
 		3CB0A2EB2100DAF600D79446 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB0A2ED2100DAF600D79446 /* Onboarding.storyboard */; };
+		EA2124392101DF5B0050D814 /* UIColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2124382101DF5B0050D814 /* UIColorExt.swift */; };
 		EA60F82020FF37CA00CA7680 /* Cartoon Relief.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA60F81F20FF37CA00CA7680 /* Cartoon Relief.ttf */; };
 		EA67967620FDD34D009551F6 /* ChallengeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA67967520FDD34D009551F6 /* ChallengeManager.swift */; };
 		EA67967920FDD364009551F6 /* Education.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA67967720FDD364009551F6 /* Education.xcdatamodeld */; };
@@ -61,6 +62,7 @@
 		3CB0A2F22100DC5100D79446 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Onboarding.strings; sourceTree = "<group>"; };
 		3CB0A2F42100DC5D00D79446 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Onboarding.strings; sourceTree = "<group>"; };
 		EA2124302101C0EB0050D814 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
+		EA2124382101DF5B0050D814 /* UIColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExt.swift; sourceTree = "<group>"; };
 		EA60F81F20FF37CA00CA7680 /* Cartoon Relief.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cartoon Relief.ttf"; sourceTree = "<group>"; };
 		EA67967520FDD34D009551F6 /* ChallengeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeManager.swift; sourceTree = "<group>"; };
 		EA67967820FDD364009551F6 /* Education.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Education.xcdatamodel; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				EAE07B4120FF90920076E884 /* UIImage+CVPixelBuffer.swift */,
 				EAE07B4220FF90970076E884 /* CVPixelBuffer+Helpers.swift */,
 				EAE07B4320FF90D10076E884 /* UIImageExt.swift */,
+				EA2124382101DF5B0050D814 /* UIColorExt.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				EAE07B4520FF912B0076E884 /* UIImage+CVPixelBuffer.swift in Sources */,
 				EA8CF20721006A9000F70AEC /* Onboarding1ViewController.swift in Sources */,
 				3C0C30E9210097B000EC18AC /* Onboarding3ViewController.swift in Sources */,
+				EA2124392101DF5B0050D814 /* UIColorExt.swift in Sources */,
 				EA67967B20FE07B4009551F6 /* ChallengeTableViewController.swift in Sources */,
 				EA67967920FDD364009551F6 /* Education.xcdatamodeld in Sources */,
 				EAB6887620F769F90054BC27 /* SettingsViewController.swift in Sources */,
