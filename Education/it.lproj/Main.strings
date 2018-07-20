@@ -1,9 +1,9 @@
 
 /* Class = "UISegmentedControl"; 5tN-d6-riQ.segmentTitles[0] = "Female"; ObjectID = "5tN-d6-riQ"; */
-"5tN-d6-riQ.segmentTitles[0]" = "Female";
+"5tN-d6-riQ.segmentTitles[0]" = "Femminile";
 
 /* Class = "UISegmentedControl"; 5tN-d6-riQ.segmentTitles[1] = "Male"; ObjectID = "5tN-d6-riQ"; */
-"5tN-d6-riQ.segmentTitles[1]" = "Male";
+"5tN-d6-riQ.segmentTitles[1]" = "Maschile";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "DDH-ft-Q2L"; */
 "DDH-ft-Q2L.title" = "Item";
