@@ -200,6 +200,7 @@
                         <outlet property="listenRepeatLabel" destination="JfP-bv-uSV" id="JG6-Zp-GiB"/>
                         <outlet property="micButton" destination="SPV-JB-e5S" id="kdL-iA-NwL"/>
                         <outlet property="micStatusLabel" destination="z4i-53-Xx5" id="ag2-O2-7fk"/>
+                        <outlet property="repeatSpeechButton" destination="GZt-ri-0p8" id="IFA-rZ-0Fr"/>
                         <outlet property="settingsButton" destination="OFN-se-AGH" id="1je-FU-Eg0"/>
                         <outlet property="squareFrame" destination="4sj-CC-bZA" id="Phi-va-Zcl"/>
                     </connections>

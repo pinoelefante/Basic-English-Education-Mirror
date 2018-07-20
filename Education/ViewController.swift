@@ -13,7 +13,7 @@ import Vision
 import Speech
 import JavaScriptCore
 
-class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, SFSpeechRecognizerDelegate {
+class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate, SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate {
     
     @IBOutlet weak var challengeShowContainer: UIView!
     @IBOutlet weak var challengeTitleLabel: UILabel!
@@ -28,6 +28,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     @IBOutlet weak var listenRepeatLabel: UILabel!
     @IBOutlet weak var micStatusLabel: UILabel!
     @IBOutlet weak var micButton: UIButton!
+    @IBOutlet weak var repeatSpeechButton: UIButton!
     //Mauro
     var jsContext: JSContext!
     var copy: CVPixelBuffer!
@@ -65,6 +66,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         super.viewDidLoad()
         self.initializeJS()
         
+        synth.delegate = self
+        
         //Start Camera
         captureSession = AVCaptureSession()
         guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
@@ -100,6 +103,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         
         micButton.layer.cornerRadius = 15
         micButton.layer.borderColor = UIColor.blue.cgColor
+        
+        repeatSpeechButton.layer.cornerRadius = 15
+        repeatSpeechButton.layer.borderColor = UIColor.blue.cgColor
         
 //        view.bringSubview(toFront: settingsButton)
         view.bringSubview(toFront: currentImage)
@@ -198,6 +204,15 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryMultiRoute)
         try? AVAudioSession.sharedInstance().setMode(AVAudioSessionModeDefault)
         synth.speak(myUtterance)
+        
+    }
+    // Syntethizer starts to speak
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        repeatSpeechButton.layer.borderWidth = 0
+    }
+    // Syntethizer finishes to speak
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+        repeatSpeechButton.layer.borderWidth = 2
     }
     @IBAction func repeatText2Speech(_ sender: UIButton) {
         text2speech(text: lastWord!, color: lastColor!)
@@ -233,16 +248,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     }
                     print(self.speechTextListened ?? "Nessun testo")
                     let s_comparison = self.speechTextListened?.caseInsensitiveCompare(self.listenRepeatLabel.text!)
-                    if s_comparison?.rawValue == 0 {
-                        ChallengeManager.setSpeechComplete(word: self.lastWord!)
-                        
-                        self.micStatusLabel.textColor = UIColor.green
-                        self.micStatusLabel.text = NSLocalizedString("Success!", comment: "MicFinishSuccess")
-                    }
-                    else {
-                        self.micStatusLabel.textColor = UIColor.red
-                        self.micStatusLabel.text = NSLocalizedString("Incomplete!", comment: "MicFinishIncomplete")
-                    }
+                    self.finishSpeech(complete: s_comparison?.rawValue == 0)
                 }
                 else // Start listening
                 {
@@ -250,12 +256,29 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     self.mic_listening = true
                     self.micStatusLabel.textColor = UIColor.black;
                     if granted {
-                        self.startListening()
+                        self.startListening(toFind: self.getPhrase(word: self.lastWord!, color: self.lastColor!))
+                        {
+                            self.mic_listening = false
+                            self.stopListening()
+                            self.finishSpeech(complete: true)
+                        }
                         self.micStatusLabel.text = NSLocalizedString("Listening...", comment: "MicListening")
                     }
                 }
             }
         })
+    }
+    private func finishSpeech(complete:Bool){
+        if complete {
+            ChallengeManager.setSpeechComplete(word: self.lastWord!)
+            
+            self.micStatusLabel.textColor = UIColor.green
+//            self.micStatusLabel.text = NSLocalizedString("Success!", comment: "MicFinishSuccess")
+        }
+        else {
+            self.micStatusLabel.textColor = UIColor.red
+//            self.micStatusLabel.text = NSLocalizedString("Incomplete!", comment: "MicFinishIncomplete")
+        }
     }
     @IBAction func closeListenRepeatAction(_ sender: UIButton) {
         if mic_listening{
@@ -421,7 +444,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         return color
     }
     var speechTextListened : String?
-    private func startListening() {
+    private func startListening(toFind:String, onFind:@escaping ()->Void) {
         // Clear existing tasks
         if recognitionTask != nil {
             recognitionTask?.cancel()
@@ -461,6 +484,10 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                 self.speechTextListened = result?.bestTranscription.formattedString
                 self.micStatusLabel.text = self.speechTextListened
                 isFinal = result!.isFinal
+                let s_comparison = self.speechTextListened?.caseInsensitiveCompare(toFind)
+                if s_comparison?.rawValue == 0 {
+                    onFind()
+                }
             }
             
             if error != nil || isFinal {
