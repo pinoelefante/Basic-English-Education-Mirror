@@ -53,8 +53,17 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     var mic_listening = false {
         willSet {
-            micButton.layer.borderWidth = newValue ? 2 : 0
-            
+            switch newValue {
+            case true:
+                micButton.layer.borderWidth = 2
+                break
+            case false:
+                micButton.layer.borderWidth = 0
+                if(speechTextListened.isEmpty){
+                    micStatusLabel.text = ""
+                }
+                break
+            }
         }
     }
     
@@ -195,7 +204,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     //Method to speak
     func text2speech(text:String, color:String) {
-        if !SettingsManager.isSoundOn || synth.isSpeaking || mic_listening{
+        if mic_listening {
+            stopListening()
+            mic_listening = false
+        }
+        if !SettingsManager.isSoundOn || synth.isSpeaking {
             return
         }
         let phrase = getPhrase(word: text, color: color)
@@ -248,9 +261,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     if granted {
                         self.stopListening()
                     }
-                    print(self.speechTextListened ?? "Nessun testo")
-                    let s_comparison = self.speechTextListened?.caseInsensitiveCompare(self.listenRepeatLabel.text!)
-                    self.finishSpeech(complete: s_comparison?.rawValue == 0)
+//                    print(self.speechTextListened ?? "Nessun testo")
+                    let s_comparison = self.speechTextListened.caseInsensitiveCompare(self.listenRepeatLabel.text!)
+                    self.finishSpeech(complete: s_comparison.rawValue == 0)
                 }
                 else // Start listening
                 {
@@ -445,14 +458,14 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
 //        print("Color: "+color.description)
         return color
     }
-    var speechTextListened : String?
+    var speechTextListened : String = ""
     private func startListening(toFind:String, onFind:@escaping ()->Void) {
         // Clear existing tasks
         if recognitionTask != nil {
             recognitionTask?.cancel()
             recognitionTask = nil
         }
-        
+        speechTextListened = ""
         // Start audio session
         let audioSession = AVAudioSession.sharedInstance()
         do {
@@ -483,11 +496,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             var isFinal = false
             
             if result != nil {
-                self.speechTextListened = result?.bestTranscription.formattedString
+                self.speechTextListened = (result?.bestTranscription.formattedString)!
                 self.micStatusLabel.text = self.speechTextListened
                 isFinal = result!.isFinal
-                let s_comparison = self.speechTextListened?.caseInsensitiveCompare(toFind)
-                if s_comparison?.rawValue == 0 {
+                let s_comparison = self.speechTextListened.caseInsensitiveCompare(toFind)
+                if s_comparison.rawValue == 0 {
                     onFind()
                 }
             }
