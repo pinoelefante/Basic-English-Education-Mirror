@@ -139,7 +139,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             SettingsManager.points+=Int(result_seen.points)
             if(result_seen.isChallenge){
                 print("Sfida completata: \(word)")
-                showChallengeComplete(challengeName: word, challengeTitle: "Challenge complete!" , points: result_seen.points)
+                showChallengeComplete(challengeName: word, challengeTitle: NSLocalizedString("Challenge complete!", comment: "NotificationChallengeComplete") , points: result_seen.points)
             }
             else{
                 /*
@@ -204,7 +204,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     }
     func showListenRepeat(word:String, color:String)
     {
-        let labelText = "The \(word) \(color != "" ? "is \(color)" : "")"
+        let labelText = getPhrase(word: word, color: color)
         
         mic_listening = false
         listenRepeatLabel.text = labelText
@@ -237,11 +237,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                         ChallengeManager.setSpeechComplete(word: self.lastWord!)
                         
                         self.micStatusLabel.textColor = UIColor.green
-                        self.micStatusLabel.text = "Success!"
+                        self.micStatusLabel.text = NSLocalizedString("Success!", comment: "MicFinishSuccess")
                     }
                     else {
                         self.micStatusLabel.textColor = UIColor.red
-                        self.micStatusLabel.text = "Incomplete!"
+                        self.micStatusLabel.text = NSLocalizedString("Incomplete!", comment: "MicFinishIncomplete")
                     }
                 }
                 else // Start listening
@@ -251,7 +251,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
                     self.micStatusLabel.textColor = UIColor.black;
                     if granted {
                         self.startListening()
-                        self.micStatusLabel.text = "Listening..."
+                        self.micStatusLabel.text = NSLocalizedString("Listening...", comment: "MicListening")
                     }
                 }
             }
@@ -435,7 +435,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             try audioSession.setMode(AVAudioSessionModeMeasurement)
             try audioSession.setActive(true, with: .notifyOthersOnDeactivation)
         } catch {
-            self.micStatusLabel.text = "An error occurred when starting audio session."
+            self.micStatusLabel.text = NSLocalizedString("An error occurred when starting audio session.", comment: "MicStartAudioSessionFail")
             return
         }
         
@@ -482,7 +482,7 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         do {
             try audioEngine.start()
         } catch {
-            self.micStatusLabel.text = "An error occurred starting audio engine"
+            self.micStatusLabel.text = NSLocalizedString("An error occurred starting audio engine", comment: "MicStartAudioEngineFail")
         }
     }
     
@@ -508,20 +508,20 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             
             switch status {
             case .authorized:
-                message = "Listening..."
+                message = NSLocalizedString("Listening...", comment: "MicPermissionAuthorized")
                 granted = true
                 break
                 
             case .denied:
-                message = "Access to speech recognition is denied by the user."
+                message = NSLocalizedString("Access to speech recognition is denied by the user.", comment: "MicPermissionDenied")
                 break
                 
             case .restricted:
-                message = "Speech recognition is restricted."
+                message = NSLocalizedString("Speech recognition is restricted.", comment: "MicPermissionRestricted")
                 break
                 
             case .notDetermined:
-                message = "Speech recognition has not been authorized yet."
+                message = NSLocalizedString("Speech recognition has not been authorized yet.", comment: "MicPermissionNotDetermined")
                 break
             }
             
