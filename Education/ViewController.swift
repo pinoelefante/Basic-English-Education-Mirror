@@ -34,6 +34,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
     var copy: CVPixelBuffer!
     var uicolor: UIColor!
     var colort: UIColor!
+    var colort1: UIColor!
+    var colort2: UIColor!
     var imageView: UIImageView = UIImageView()
     let context = CIContext()
     
@@ -701,8 +703,48 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let image = self.imageFromSampleBuffer(sampleBuffer: sampleBuffer)
         imageView.image = image
         
-        let screenCentre : CGPoint = CGPoint(x: view.center.x, y: view.center.y)
+        let screenCentre : CGPoint = CGPoint(x: imageView.center.x, y: imageView.center.y)
         colort = self.imageView.image?.getPixelColor(pos: screenCentre)
+        
+        let screenCentre1 : CGPoint = CGPoint(x: imageView.center.x+20, y: imageView.center.y)
+        colort1 = self.imageView.image?.getPixelColor(pos: screenCentre1)
+        
+        let screenCentre2 : CGPoint = CGPoint(x: imageView.center.x-20, y: imageView.center.y)
+        colort2 = self.imageView.image?.getPixelColor(pos: screenCentre2)
+        
+        var r: CGFloat = 0
+        var r1: CGFloat = 0
+        var r2: CGFloat = 0
+        var b: CGFloat = 0
+        var b1: CGFloat = 0
+        var b2: CGFloat = 0
+        var g: CGFloat = 0
+        var g1: CGFloat = 0
+        var g2: CGFloat = 0
+        
+        if let color1Components = colort.components {
+            r = color1Components.red
+            g = color1Components.green
+            b = color1Components.blue
+        }
+        if let color2Components = colort1.components {
+            r1 = color2Components.red
+            g1 = color2Components.green
+            b1 = color2Components.blue
+        }
+        if let color3Components = colort2.components {
+            r2 = color3Components.red
+            g2 = color3Components.green
+            b2 = color3Components.blue
+        }
+        
+        let red: CGFloat = (r+r1+r2)/3
+        let green: CGFloat = (g+g1+g2)/3
+        let blue: CGFloat = (b+b1+b2)/3
+        
+//        print("Red: \(red) - Green: \(green) - Blue: \(blue)")
+        
+        let _: UIColor = UIColor(displayP3Red: red*255, green: green*255, blue: blue*255, alpha: 255)
         
         let col = self.principalColor(color: self.colort)
         let col1 = self.whichColor(color: self.colort)
@@ -745,5 +787,12 @@ extension UIImage {
         let a = CGFloat(data[pixelInfo+3]) / CGFloat(255.0)
         
         return UIColor(red: r, green: g, blue: b, alpha: a)
+    }
+}
+
+extension UIColor {
+    var components: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat)? {
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        return getRed(&r, green: &g, blue: &b, alpha: &a) ? (r,g,b,a) : nil
     }
 }
